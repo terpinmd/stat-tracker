@@ -1,15 +1,16 @@
 package com.hammond.stattracker.domain;
 
-public class Team {
+import android.annotation.SuppressLint;
+
+public class Team extends AbstractDomainClass{
 	
-	private Integer id;
 	private String name;
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public Team() {}
+	
+	public Team(String name) {
+		super();
+		this.name = name;
 	}
 	public String getName() {
 		return name;
@@ -17,6 +18,9 @@ public class Team {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	@SuppressLint("DefaultLocale")
 	@Override
 	public String toString() {
 		return this.name.toUpperCase();

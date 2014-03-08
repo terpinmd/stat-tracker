@@ -19,9 +19,15 @@
         android:keepScreenOn="true"
         android:text="@string/team_management"
         android:textColor="#33b5e5"
-        android:textSize="25sp"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
+    
+	    <ListView 
+	      android:id="@+id/list"  
+	      android:layout_width="match_parent"
+          android:layout_height="match_parent"
+	    />
     <!--
          This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows.

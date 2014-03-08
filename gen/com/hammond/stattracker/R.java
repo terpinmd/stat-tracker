@@ -27,7 +27,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class id {
         public static final int fullscreen_content=0x7f070000;
         public static final int fullscreen_content_controls=0x7f070001;
-        public static final int select_team_spinner=0x7f070005;
+        public static final int list=0x7f070005;
+        public static final int select_team_spinner=0x7f070006;
         public static final int stat_management=0x7f070003;
         public static final int team_management=0x7f070002;
         public static final int team_management_name_text=0x7f070004;
