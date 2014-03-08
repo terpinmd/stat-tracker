@@ -2,7 +2,13 @@
 <resources>
 
     <string name="app_name">StatTracker</string>
-    <string name="dummy_button">TEST Button</string>
     <string name="splash">STAT\nTRACKER</string>
 
+    <string name="team_management">Team Management</string>
+    <string name="edit_team">Edit Team</string>
+        
+    <string name="stat_management">Stat Management</string>
+    
+
+    
 </resources>

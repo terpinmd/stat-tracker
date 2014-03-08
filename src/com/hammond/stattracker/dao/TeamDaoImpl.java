@@ -39,18 +39,13 @@ public class TeamDaoImpl extends SQLiteOpenHelper {
 	}
 	
 	public void create(){
-		SQLiteDatabase db = this.getWritableDatabase();
-		
+		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
 		values.put(TeamSchema.COLUMN_TEAM_NAME, "MARYLAND");
 		db.insert(TeamSchema.TABLE_NAME, null, values);	
-		
-		List l = this.getAll();
-		System.out.println(l.size());
-		
 	}
 	
-	public List getAll(){
+	public List<Team> getAll(){
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery("select * from team", null);
 		List<Team> teams = new ArrayList<Team>();
@@ -58,6 +53,8 @@ public class TeamDaoImpl extends SQLiteOpenHelper {
 		if (cursor.moveToFirst()) {
 			do {
 				Team team = new Team();
+				team.setName(cursor.getString(cursor.getColumnIndex(TeamSchema.COLUMN_TEAM_NAME)));
+				team.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				teams.add(team);
 			} while (cursor.moveToNext());
 		}
