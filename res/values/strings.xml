@@ -15,4 +15,8 @@
 	
 	
 	<string name="name_label">Name:</string>  
+	
+	<string name="roster_label">Roster:</string>  
+	<string name="select_player"></string>
+	
 </resources>

@@ -42,8 +42,7 @@ public class Player extends AbstractDomainClass{
 
 	@Override
 	public String toString() {
-		return "Player [firstName=" + firstName + ", lastName=" + lastName
-				+ ", jersyNumber=" + jersyNumber + "]";
+		return "#" + this.getJersyNumber() + ": " + this.getFirstName() + " " + this.getLastName();
 	}
 	
 	

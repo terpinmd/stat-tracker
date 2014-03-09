@@ -59,6 +59,32 @@
                 android:inputType="text" >
             </EditText>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/editTeamRoster"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+
+            <TextView
+                android:id="@+id/teamRosterLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/roster_label"
+                android:textSize="9pt" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/select_player_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/select_player" /> />
+            
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -87,6 +113,5 @@
             android:layout_weight="1"
             android:text="@string/save" />
     </LinearLayout>
-
 
 </FrameLayout>
