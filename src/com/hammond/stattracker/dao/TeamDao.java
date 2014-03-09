@@ -30,6 +30,15 @@ public class TeamDao extends AbstractBaseDao {
 		db.insert(SchemaDefinition.TABLE_NAME_TEAM, null, values);	
 	}
 	
+	
+	public void save(Team team){
+		SQLiteDatabase db = this.getWritableDatabase();		
+		ContentValues values = new ContentValues();		
+		values.put(SchemaDefinition.COLUMN_TEAM_NAME, team.getName());
+		db.update(SchemaDefinition.TABLE_NAME_TEAM, values, "id = ?", new String[] {team.getId().toString()});
+	}
+	
+	
 	public List<Team> getAll(){
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery("select * from team", null);

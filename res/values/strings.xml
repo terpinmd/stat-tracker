@@ -6,8 +6,13 @@
 
     <string name="team_management">Team Management</string>
     <string name="edit_team">Edit Team</string>
-        
+    <string name="select_team">Select Team</string>    
+    
     <string name="stat_management">Stat Management</string>
     
-    
+	<string name="back">Back</string>
+	<string name="save">Save</string>    
+	
+	
+	<string name="name_label">Name:</string>  
 </resources>

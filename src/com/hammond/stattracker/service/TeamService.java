@@ -25,4 +25,7 @@ public class TeamService {
 		return this.teamDao.getAll();
 	}
 	
+	public void save(Team team){
+		this.teamDao.save(team);
+	}
 }
