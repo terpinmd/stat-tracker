@@ -30,6 +30,13 @@
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme" >
         </activity>
+        
+        <activity
+            android:name="com.hammond.stattracker.ui.admin.PlayerManagementActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>

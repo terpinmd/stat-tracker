@@ -39,4 +39,8 @@ public class PlayerService {
 	public List<Player> getAll(){
 		return this.playerDao.getAll();
 	}
+	
+	public List<Player> getPlayersForTeam(Team team){
+		return this.playerDao.getPlayersForTeam(team);
+	}
 }

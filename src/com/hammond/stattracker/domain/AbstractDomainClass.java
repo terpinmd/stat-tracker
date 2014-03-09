@@ -1,7 +1,11 @@
 package com.hammond.stattracker.domain;
 
-public abstract class AbstractDomainClass {
+import java.io.Serializable;
 
+public abstract class AbstractDomainClass implements Serializable {
+
+	private static final long serialVersionUID = -1639467997160510068L;
+	
 	private Long id;
 
 	public Long getId() {

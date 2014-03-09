@@ -2,6 +2,8 @@ package com.hammond.stattracker.domain;
 
 public class Player extends AbstractDomainClass{
 
+	private static final long serialVersionUID = -7889391051781056596L;
+
 	private String firstName, lastName;
 	
 	private int jersyNumber;

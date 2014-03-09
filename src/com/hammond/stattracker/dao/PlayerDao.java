@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.hammond.stattracker.dao.db.SchemaDefinition;
 import com.hammond.stattracker.domain.Player;
+import com.hammond.stattracker.domain.Team;
 
 public class PlayerDao extends AbstractBaseDao{
 
@@ -37,11 +38,34 @@ public class PlayerDao extends AbstractBaseDao{
 		db.insert(SchemaDefinition.TABLE_NAME_PLAYER, null, values);	
 	}
 	
-	public List<Player> getAll(){
+	public List<Player> getPlayersForTeam(Team team){
+		List<Player> players = new ArrayList<Player>();
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("select * from player", null);
+	
+		Cursor cursor = db.query(SchemaDefinition.TABLE_NAME_PLAYER, 
+								 null, 
+								 SchemaDefinition.COLUMN_TEAM + " = ?", 
+								 new String[]{team.getId().toString()}, 
+								 null, 
+								 null, 
+								 SchemaDefinition.COLUMN_JERSEY_NUMBER);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				players.add(getPlayer(cursor));
+			} while (cursor.moveToNext());
+		}
+		
+		return players;
+	}
+	
+	
+	public List<Player> getAll(){
 		List<Player> players = new ArrayList<Player>();
 		
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("select * from player", null);
+	
 		if (cursor.moveToFirst()) {
 			do {
 				players.add(getPlayer(cursor));

@@ -16,11 +16,6 @@ public class TeamService {
 		this.teamDao = new TeamDao(activity);
 	}
 	
-	public void createDefaults(){		
-		Team team = new Team("MARYLAND");
-		teamDao.create(team);
-	}
-	
 	public List<Team> getAll(){
 		return this.teamDao.getAll();
 	}

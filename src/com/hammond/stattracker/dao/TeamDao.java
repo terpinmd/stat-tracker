@@ -23,11 +23,13 @@ public class TeamDao extends AbstractBaseDao {
 	}
 	
 	
-	public void create(Team team){
+	public Team create(Team team){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
 		values.put(SchemaDefinition.COLUMN_TEAM_NAME, team.getName());
-		db.insert(SchemaDefinition.TABLE_NAME_TEAM, null, values);	
+		long id = db.insert(SchemaDefinition.TABLE_NAME_TEAM, null, values);	
+		team.setId(id);
+		return team;
 	}
 	
 	

@@ -18,20 +18,29 @@
             android:textSize="10pt" >
         </TextView>
 
-        <TextView
-            android:id="@+id/TextViewTitle2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/selectTeamControls"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/select_team"
-            android:textSize="9pt" >
-        </TextView>
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
 
-        <Spinner
-            android:id="@+id/select_team_spinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:prompt="@string/select_team" />
+            <TextView
+                android:id="@+id/TextViewTitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/team_label"
+                android:textSize="9pt" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/select_team_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editTeamControls"
@@ -82,8 +91,26 @@
                 android:id="@+id/select_player_spinner"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:prompt="@string/select_player" /> />
-            
+                android:prompt="@string/select_player" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/showTeamRoster"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+
+            <Button
+                android:id="@+id/editPlayer"
+                style="?buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="editRoster"
+                android:text="@string/edit" />
         </LinearLayout>
     </LinearLayout>
 
@@ -111,6 +138,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="save"
             android:text="@string/save" />
     </LinearLayout>
 
