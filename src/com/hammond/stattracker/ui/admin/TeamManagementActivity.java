@@ -46,7 +46,7 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     
     public void buildPlayersSpinner(){
     	final Spinner spinner = (Spinner) findViewById(R.id.select_player_spinner);
-    	List<Player> list = this.playerService.getAll();
+    	List<Player> list = this.playerService.getPlayersForTeam(this.getSelectedTeam());
        	ArrayAdapter<Player> adapter = new ArrayAdapter<Player>(this, android.R.layout.simple_spinner_dropdown_item, list);
        	adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
        	spinner.setAdapter(adapter);
@@ -65,6 +65,7 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     public void editRoster(View view){
        	final Intent intent = new Intent(this, PlayerManagementActivity.class);
        	intent.putExtra("team", this.getSelectedTeam());
+       	intent.putExtra("player", this.getSelectedPlayer());
        	startActivity(intent);	    	
     }
     
@@ -72,6 +73,11 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     private Team getSelectedTeam(){
     	Spinner spinner =  (Spinner) findViewById(R.id.select_team_spinner);
     	return (Team) spinner.getSelectedItem();
+    }
+ 
+    private Player getSelectedPlayer(){
+    	Spinner spinner =  (Spinner) findViewById(R.id.select_player_spinner);
+    	return (Player) spinner.getSelectedItem();
     }
     
 

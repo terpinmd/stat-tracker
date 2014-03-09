@@ -25,25 +25,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int TextViewTitle=0x7f070000;
-        public static final int TextViewTitle2=0x7f070009;
-        public static final int back=0x7f070002;
-        public static final int backAndSaveControls=0x7f070001;
-        public static final int editPlayer=0x7f070012;
-        public static final int editTeamControls=0x7f07000b;
-        public static final int editTeamName=0x7f07000d;
-        public static final int editTeamNameLabel=0x7f07000c;
-        public static final int editTeamRoster=0x7f07000e;
+        public static final int InnerRelativeLayout=0x7f070002;
+        public static final int TextViewTitle=0x7f070008;
+        public static final int TextViewTitle2=0x7f07000a;
+        public static final int button1=0x7f070001;
+        public static final int editPlayer=0x7f070013;
+        public static final int editTeamControls=0x7f07000c;
+        public static final int editTeamName=0x7f07000e;
+        public static final int editTeamNameLabel=0x7f07000d;
+        public static final int editTeamRoster=0x7f07000f;
         public static final int fullscreen_content=0x7f070004;
         public static final int fullscreen_content_controls=0x7f070005;
         public static final int save=0x7f070003;
-        public static final int selectTeamControls=0x7f070008;
-        public static final int select_player_spinner=0x7f070010;
-        public static final int select_team_spinner=0x7f07000a;
-        public static final int showTeamRoster=0x7f070011;
+        public static final int selectTeamControls=0x7f070009;
+        public static final int select_player_spinner=0x7f070011;
+        public static final int select_team_spinner=0x7f07000b;
+        public static final int showTeamRoster=0x7f070012;
         public static final int stat_management=0x7f070007;
-        public static final int teamRosterLabel=0x7f07000f;
+        public static final int teamRosterLabel=0x7f070010;
         public static final int team_management=0x7f070006;
+        public static final int textView1=0x7f070000;
     }
     public static final class layout {
         public static final int activity_player_mgmt=0x7f030000;
@@ -55,10 +56,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int back=0x7f050005;
         public static final int edit=0x7f050007;
         public static final int edit_team=0x7f050003;
+        public static final int first_name_label=0x7f05000b;
+        public static final int last_name_label=0x7f05000c;
         public static final int name_label=0x7f05000a;
-        public static final int roster_label=0x7f05000b;
+        public static final int roster_label=0x7f05000d;
         public static final int save=0x7f050006;
-        public static final int select_player=0x7f05000c;
+        public static final int select_player=0x7f05000e;
         public static final int splash=0x7f050001;
         public static final int stat_management=0x7f050004;
         public static final int team_label=0x7f050009;

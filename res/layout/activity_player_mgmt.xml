@@ -1,46 +1,45 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc" >
 
-
-    
-        <TextView
-            android:id="@+id/TextViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="PLAYER DETAILS"
-            android:textSize="10pt" >
-        </TextView>
-    
-
-    <LinearLayout
-        android:id="@+id/backAndSaveControls"
-        style="?buttonBarStyle"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="@color/black_overlay"
-        android:orientation="horizontal"
-        tools:ignore="UselessParent" >
+        android:layout_marginTop="48dp"
+        android:textSize="10pt"
+        android:text="@string/first_name_label" />
 
-        <Button
-            android:id="@+id/back"
-            style="?buttonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/back" />
+    <EditText
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textView1"
+        android:inputType="text"
+        android:layout_marginTop="48dp"/>
+
+    
+    
+    
+    
+    
+    <RelativeLayout
+        android:id="@+id/InnerRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
 
         <Button
             android:id="@+id/save"
             style="?buttonBarButtonStyle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/save" />
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:text="@string/save" >
+        </Button>
+    </RelativeLayout>
 
-</FrameLayout>
+</RelativeLayout>
