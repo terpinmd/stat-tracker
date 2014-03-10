@@ -59,6 +59,8 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 		EditText editText = (EditText) findViewById(R.id.editTeamName);
 		team.setName(editText.getText().toString());
 		teamService.save(team);    	
+		
+		//update list of teams with new name here
     }
     
     

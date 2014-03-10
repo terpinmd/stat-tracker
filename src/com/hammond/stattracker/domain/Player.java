@@ -6,7 +6,7 @@ public class Player extends AbstractDomainClass{
 
 	private String firstName, lastName;
 	
-	private int jersyNumber;
+	private Integer jersyNumber;
 	
 	private Team team;
 
@@ -26,11 +26,11 @@ public class Player extends AbstractDomainClass{
 		this.lastName = lastName;
 	}
 
-	public int getJersyNumber() {
+	public Integer getJersyNumber() {
 		return jersyNumber;
 	}
 
-	public void setJersyNumber(int jersyNumber) {
+	public void setJersyNumber(Integer jersyNumber) {
 		this.jersyNumber = jersyNumber;
 	}
 

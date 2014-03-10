@@ -21,7 +21,9 @@
 	<string name="name_label">Name:</string>	
 	<string name="first_name_label">First Name:</string>
 	<string name="last_name_label">Last Name:</string>	
-		
+	<string name="jersey_label">Jersey:</string>	
+			
+			
 	<string name="roster_label">Roster:</string>  
 	<string name="select_player"></string>
 	

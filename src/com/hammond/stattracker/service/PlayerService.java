@@ -43,4 +43,8 @@ public class PlayerService {
 	public List<Player> getPlayersForTeam(Team team){
 		return this.playerDao.getPlayersForTeam(team);
 	}
+	
+	public void save(Player player){
+		this.playerDao.save(player);
+	}
 }
