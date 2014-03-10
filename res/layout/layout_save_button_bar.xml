@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/buttonBarRelativeLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true" >
+
+    <Button
+        android:id="@+id/save"
+        style="?buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="save"
+        android:text="@string/save" >
+    </Button>
+
+</RelativeLayout>
