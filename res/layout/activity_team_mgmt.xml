@@ -1,120 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="48dp" >
 
-        <TextView
-            android:id="@+id/TextViewTitle"
+        <TableRow
+            android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="@string/team_management"
-            android:textSize="10pt" >
-        </TextView>
+            android:padding="5dip" >
 
-        <LinearLayout
-            android:id="@+id/selectTeamControls"
-            style="?buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent" >
+            <TextView
+                android:id="@+id/TextViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/team_management"
+                android:textSize="10pt" >
+            </TextView>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dip" >
 
             <TextView
                 android:id="@+id/TextViewTitle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight=".3"
                 android:text="@string/team_label"
                 android:textSize="9pt" >
             </TextView>
 
             <Spinner
                 android:id="@+id/select_team_spinner"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight=".7" />
+        </TableRow>
 
-        <LinearLayout
-            android:id="@+id/editTeamControls"
-            style="?buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent" >
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dip"
+            android:padding="5dip" >
 
             <TextView
                 android:id="@+id/editTeamNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight=".3"
                 android:text="@string/name_label"
                 android:textSize="9pt" >
             </TextView>
 
             <EditText
                 android:id="@+id/editTeamName"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight=".7"
                 android:inputType="text" >
             </EditText>
-        </LinearLayout>
+        </TableRow>
 
-        <LinearLayout
-            android:id="@+id/editTeamRoster"
-            style="?buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent" >
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dip" >
 
             <TextView
                 android:id="@+id/teamRosterLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight=".3"
                 android:text="@string/roster_label"
                 android:textSize="9pt" >
             </TextView>
 
             <Spinner
                 android:id="@+id/select_player_spinner"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight=".7"
                 android:prompt="@string/select_player" />
-        </LinearLayout>
+        </TableRow>
 
-        <LinearLayout
-            android:id="@+id/showTeamRoster"
-            style="?buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent" >
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dip" >
+ 
 
             <Button
                 android:id="@+id/editPlayer"
                 style="?buttonBarButtonStyle"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:gravity="right"
                 android:onClick="editRoster"
                 android:text="@string/edit" />
-        </LinearLayout>
-    </LinearLayout>
+        </TableRow>
+    </TableLayout>
 
-    
     <RelativeLayout
         android:id="@+id/InnerRelativeLayout"
         android:layout_width="wrap_content"
@@ -131,4 +133,5 @@
             android:text="@string/save" >
         </Button>
     </RelativeLayout>
+
 </RelativeLayout>

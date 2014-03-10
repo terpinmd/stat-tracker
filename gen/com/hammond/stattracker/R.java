@@ -27,12 +27,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class id {
         public static final int InnerRelativeLayout=0x7f07000a;
         public static final int TextViewTitle=0x7f070010;
-        public static final int TextViewTitle2=0x7f070012;
-        public static final int editPlayer=0x7f07001b;
-        public static final int editTeamControls=0x7f070014;
-        public static final int editTeamName=0x7f070016;
-        public static final int editTeamNameLabel=0x7f070015;
-        public static final int editTeamRoster=0x7f070017;
+        public static final int TextViewTitle2=0x7f070011;
+        public static final int editPlayer=0x7f070019;
+        public static final int editTeamName=0x7f070014;
+        public static final int editTeamNameLabel=0x7f070013;
         public static final int firstNameLabel=0x7f070002;
         public static final int firstNameText=0x7f070003;
         public static final int fullscreen_content=0x7f07000c;
@@ -42,16 +40,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int lastNameLabel=0x7f070005;
         public static final int lastNameText=0x7f070006;
         public static final int save=0x7f07000b;
-        public static final int selectTeamControls=0x7f070011;
-        public static final int select_player_spinner=0x7f070019;
-        public static final int select_team_spinner=0x7f070013;
-        public static final int showTeamRoster=0x7f07001a;
+        public static final int select_player_spinner=0x7f070017;
+        public static final int select_team_spinner=0x7f070012;
         public static final int stat_management=0x7f07000f;
         public static final int tableLayout1=0x7f070000;
         public static final int tableRow1=0x7f070001;
         public static final int tableRow2=0x7f070004;
         public static final int tableRow3=0x7f070007;
-        public static final int teamRosterLabel=0x7f070018;
+        public static final int tableRow4=0x7f070015;
+        public static final int tableRow5=0x7f070018;
+        public static final int teamRosterLabel=0x7f070016;
         public static final int team_management=0x7f07000e;
     }
     public static final class layout {
