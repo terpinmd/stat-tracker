@@ -50,6 +50,13 @@ public class PlayerDao extends AbstractBaseDao{
 	}
 	
 	
+	public void delete(Player player){
+		SQLiteDatabase db = this.getWritableDatabase();		
+		db.delete(SchemaDefinition.TABLE_NAME_PLAYER, "id = ?", new String[] {player.getId().toString()});
+	}
+	
+	
+	
 	public List<Player> getPlayersForTeam(Team team){
 		List<Player> players = new ArrayList<Player>();
 		SQLiteDatabase db = this.getReadableDatabase();

@@ -47,4 +47,8 @@ public class PlayerService {
 	public void save(Player player){
 		this.playerDao.save(player);
 	}
+	
+	public void delete(Player player){
+		this.playerDao.delete(player);
+	}
 }

@@ -52,5 +52,9 @@ public class PlayerManagementActivity extends Activity {
 		
 		playerService.save(player);
     }
+    
+    public void delete(View view){
+    	this.playerService.delete(player);
+    }
 }
  
