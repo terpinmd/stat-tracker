@@ -76,19 +76,9 @@
 
     <RelativeLayout
         android:id="@+id/InnerRelativeLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" >
-
-        <Button
-            android:id="@+id/deleteButton"
-            style="?buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/deleteButton"
-            android:onClick="delete"            
-            android:text="@string/delete" >
-        </Button>
 
         <Button
             android:id="@+id/save"
@@ -98,6 +88,16 @@
             android:layout_alignParentRight="true"
             android:onClick="save"
             android:text="@string/save" >
+        </Button>
+
+        <Button
+            android:id="@+id/deleteButton"
+            style="?buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/save"
+            android:onClick="delete"
+            android:text="@string/delete" >
         </Button>
     </RelativeLayout>
 

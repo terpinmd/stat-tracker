@@ -1,6 +1,7 @@
 package com.hammond.stattracker.ui.admin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -55,6 +56,8 @@ public class PlayerManagementActivity extends Activity {
     
     public void delete(View view){
     	this.playerService.delete(player);
+    	Intent intent = new Intent(this, TeamManagementActivity.class);
+    	startActivity(intent);
     }
 }
  
