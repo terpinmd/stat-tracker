@@ -1,14 +1,11 @@
 package com.hammond.stattracker.ui.admin;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -17,6 +14,8 @@ import com.hammond.stattracker.domain.Player;
 import com.hammond.stattracker.domain.Team;
 import com.hammond.stattracker.service.PlayerService;
 import com.hammond.stattracker.service.TeamService;
+import com.hammond.stattracker.ui.components.PlayerSpinnerAdapter;
+import com.hammond.stattracker.ui.components.TeamSpinnerAdapter;
 
 
 public class TeamManagementActivity extends Activity implements OnItemSelectedListener{
@@ -38,19 +37,13 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 
 	public void buildTeamsSpinner(){
     	Spinner spinner = (Spinner) findViewById(R.id.select_team_spinner);
-    	List<Team> list = this.teamService.getAll();
-       	ArrayAdapter<Team> adapter = new ArrayAdapter<Team>(this, android.R.layout.simple_spinner_dropdown_item, list);
-       	adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       	spinner.setAdapter(adapter);
+       	spinner.setAdapter(new TeamSpinnerAdapter(this));
        	spinner.setOnItemSelectedListener(this);
     }
     
     public void buildPlayersSpinner(){
-    	final Spinner spinner = (Spinner) findViewById(R.id.select_player_spinner);
-    	List<Player> list = this.playerService.getPlayersForTeam(this.getSelectedTeam());
-       	ArrayAdapter<Player> adapter = new ArrayAdapter<Player>(this, android.R.layout.simple_spinner_dropdown_item, list);
-       	adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       	spinner.setAdapter(adapter);
+    	Spinner spinner = (Spinner) findViewById(R.id.select_player_spinner);
+       	spinner.setAdapter(new PlayerSpinnerAdapter(this, this.getSelectedTeam()));
     }
     
     
