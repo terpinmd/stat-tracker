@@ -45,4 +45,44 @@ public class SchemaDefinition {
 		buffer.append(")");		
 		return  buffer.toString();
 	}
+	
+	
+	
+    public static final String TABLE_NAME_GAME = "game";
+    public static final String COLUMN_GAME_TITLE = "title";
+    public static final String COLUMN_GAME_DATE = "game_date";
+    public static final String COLUMN_GAME_NOTES = "notes";
+
+	public static String getCreateGameTableSql(){
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("CREATE TABLE ").append(TABLE_NAME_GAME);
+		buffer.append("(");
+			buffer.append(ID).append(" INTEGER PRIMARY KEY").append(",");
+			buffer.append(COLUMN_TEAM).append(" INTEGER ").append(",");
+			buffer.append(COLUMN_GAME_TITLE).append(" TEXT").append(",");
+			buffer.append(COLUMN_GAME_DATE).append(" INTEGER").append(",");
+			buffer.append(COLUMN_GAME_NOTES).append(" TEXT");
+		buffer.append(")");		
+		return  buffer.toString();
+	}
+	
+	
+	public static final String TABLE_NAME_GAME_STATISTICS = "game_statistics";
+	public static final String TABLE_NAME_GAME_STATISTICS_GAME_ID = "game_id";
+	public static final String TABLE_NAME_GAME_STATISTICS_PLAYER_ID = "player_id";
+	public static final String TABLE_NAME_GAME_STATISTICS_STATISTICS_ID = "statistic_id";
+	public static final String TABLE_NAME_GAME_STATISTICS_STATISTICS_VALUE = "statistic";
+	
+	public static String getCreateGameStatisticsTableSql(){
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("CREATE TABLE ").append(TABLE_NAME_GAME_STATISTICS);
+		buffer.append("(");
+			buffer.append(ID).append(" INTEGER PRIMARY KEY").append(",");
+			buffer.append(TABLE_NAME_GAME_STATISTICS_GAME_ID).append(" INTEGER ").append(",");
+			buffer.append(TABLE_NAME_GAME_STATISTICS_PLAYER_ID).append(" INTEGER ").append(",");
+			buffer.append(TABLE_NAME_GAME_STATISTICS_STATISTICS_ID).append(" INTEGER").append(",");
+			buffer.append(TABLE_NAME_GAME_STATISTICS_STATISTICS_VALUE).append(" INTEGER");
+		buffer.append(")");		
+		return  buffer.toString();
+	}
 }

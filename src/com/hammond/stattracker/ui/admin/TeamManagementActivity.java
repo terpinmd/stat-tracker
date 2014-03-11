@@ -30,6 +30,7 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
         super.onCreate(savedInstanceState);
         teamService = new TeamService(this);
         playerService = new PlayerService(this);
+        playerService.createDefaults();
         setContentView(R.layout.activity_team_mgmt);       
         buildTeamsSpinner();
         buildPlayersSpinner();

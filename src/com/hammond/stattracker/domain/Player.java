@@ -10,6 +10,18 @@ public class Player extends AbstractDomainClass{
 	
 	private Team team;
 
+		
+	public Player(){}
+	
+	public Player(String firstName, String lastName, Integer jersyNumber,
+			Team team) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.jersyNumber = jersyNumber;
+		this.team = team;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

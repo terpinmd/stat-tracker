@@ -30,7 +30,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int TextViewTitle2=0x7f070012;
         public static final int addPlayer=0x7f07001b;
         public static final int addTeam=0x7f070014;
-        public static final int buttonBarRelativeLayout=0x7f07001d;
+        public static final int buttonBarRelativeLayout=0x7f07001e;
         public static final int deleteButton=0x7f07000c;
         public static final int editPlayer=0x7f07001c;
         public static final int editTeamName=0x7f070017;
@@ -46,7 +46,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int save=0x7f07000b;
         public static final int select_player_spinner=0x7f07001a;
         public static final int select_team_spinner=0x7f070013;
-        public static final int stat_management=0x7f070010;
+        public static final int startGameSelectTeamLabel=0x7f07001d;
+        public static final int start_game=0x7f070010;
         public static final int tableLayout1=0x7f070000;
         public static final int tableRow1=0x7f070001;
         public static final int tableRow2=0x7f070004;
@@ -60,7 +61,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_player_mgmt=0x7f030000;
         public static final int activity_splash=0x7f030001;
         public static final int activity_team_mgmt=0x7f030002;
-        public static final int layout_save_button_bar=0x7f030003;
+        public static final int dialog_start_game=0x7f030003;
+        public static final int layout_save_button_bar=0x7f030004;
     }
     public static final class string {
         public static final int add=0x7f05000a;
@@ -77,7 +79,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int save=0x7f050006;
         public static final int select_player=0x7f050011;
         public static final int splash=0x7f050001;
-        public static final int stat_management=0x7f050004;
+        public static final int start_game=0x7f050004;
         public static final int team_label=0x7f05000b;
         public static final int team_management=0x7f050002;
         public static final int view=0x7f050008;

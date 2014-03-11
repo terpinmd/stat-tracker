@@ -16,6 +16,8 @@ public class AbstractBaseDao extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(SchemaDefinition.getCreateTeamTableSql());
 		db.execSQL(SchemaDefinition.getCreatePlayerTableSql());
+		db.execSQL(SchemaDefinition.getCreateGameTableSql());
+		db.execSQL(SchemaDefinition.getCreateGameStatisticsTableSql());
 	}
 
 	@Override

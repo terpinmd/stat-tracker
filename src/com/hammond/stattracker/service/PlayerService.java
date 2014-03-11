@@ -26,13 +26,9 @@ public class PlayerService {
 		
 		Team team = new Team("MARYLAND");
 		teamDao.create(team);
-		
-		for (int i = 1 ; i < 15 ; i ++){
-			Player player = new Player();
-			player.setTeam(team);
-			player.setJersyNumber(i);
-			playerDao.create(player);
-		}
+		playerDao.create(new Player("Conner", "Hammond", 11, team));
+		playerDao.create(new Player("Dylan", "Treese", 10, team));
+		playerDao.create(new Player("Cole", "Hammond", 5, team));
 	}
 	
 	

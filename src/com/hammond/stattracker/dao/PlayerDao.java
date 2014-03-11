@@ -32,7 +32,7 @@ public class PlayerDao extends AbstractBaseDao{
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
 		values.put(SchemaDefinition.COLUMN_FIRST_NAME, player.getFirstName());
-		values.put(SchemaDefinition.COLUMN_LAST_NAME, player.getFirstName());
+		values.put(SchemaDefinition.COLUMN_LAST_NAME, player.getLastName());
 		values.put(SchemaDefinition.COLUMN_TEAM, player.getTeam().getId());
 		values.put(SchemaDefinition.COLUMN_JERSEY_NUMBER, player.getJersyNumber());	
 		db.insert(SchemaDefinition.TABLE_NAME_PLAYER, null, values);	

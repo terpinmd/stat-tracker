@@ -48,15 +48,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="openTeamManagement"
                 android:text="@string/team_management" />
             
             <Button
-                android:id="@+id/stat_management"
+                android:id="@+id/start_game"
                 style="?buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/stat_management" />
+                android:onClick="startGame"
+                android:text="@string/start_game" />
             
             
         </LinearLayout>

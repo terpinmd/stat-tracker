@@ -1,0 +1,5 @@
+
+
+Splash screen has 'recent' games.
+
+When you start a game its not saved until you commit it along with statistics.
