@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.hammond.stattracker.R;
 import com.hammond.stattracker.domain.Player;
 import com.hammond.stattracker.domain.Team;
 import com.hammond.stattracker.service.PlayerService;
@@ -19,7 +20,7 @@ public class PlayerGameListAdapter extends ArrayAdapter<Player>{
 	
 	
 	public PlayerGameListAdapter(Activity activity, Team team) {
-		super(activity,  android.R.layout.simple_spinner_dropdown_item);
+		super(activity,  R.layout.player_game_row_layout, R.id.firstNameLabel);
 		playerService = new PlayerService(activity);
 		players = this.playerService.getPlayersForTeam(team);
 		for(Player player : players){
@@ -33,9 +34,5 @@ public class PlayerGameListAdapter extends ArrayAdapter<Player>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		return super.getView(position, convertView, parent);
-	}
-	
-	
-	
-	
+	}	
 }
