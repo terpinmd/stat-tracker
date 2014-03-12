@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#0099cc"
+    android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/startGameSelectTeamLabel"
-        android:layout_width="0px"
-        android:layout_height="fill_parent"
-        android:layout_gravity="left"
-        android:text="@string/team_label"
-        android:textSize="9pt" >
-    </TextView>
+        android:id="@+id/yourTeamLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_team"
+        android:textColor="#FFF" />
 
-</RelativeLayout>
+    <Spinner
+        android:id="@+id/select_team_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/team_label" />
+
+    <TextView
+        android:id="@+id/vsTeamLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/other_team"
+        android:textColor="#FFF" />
+
+    <Spinner
+        android:id="@+id/select_other_team_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/team_label" />
+
+    <TextView
+        android:id="@+id/game_notes_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/game_notes"
+        android:textColor="#FFF" />
+
+    <EditText
+        android:id="@+id/game_notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:inputType="textCapSentences"
+        android:minHeight="120dp"
+        android:textColor="#FFF"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:id="@+id/InnerRelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/start"
+            style="?buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="start"
+            android:text="@string/start" >
+        </Button>
+    </RelativeLayout>
+
+</LinearLayout>
