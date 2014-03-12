@@ -70,6 +70,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_team_mgmt=0x7f030003;
         public static final int dialog_start_game=0x7f030004;
         public static final int layout_save_button_bar=0x7f030005;
+        public static final int player_game_row_layout=0x7f030006;
     }
     public static final class string {
         public static final int add=0x7f05000e;
