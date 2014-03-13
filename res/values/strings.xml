@@ -32,4 +32,8 @@
 	<string name="roster_label">Roster:</string>  
 	<string name="select_player"></string>
 	
+	
+	<string name="ground_ball">Ground Ball</string>
+	<string name="assist">Assist</string>
+	<string name="goal">Goal</string>	
 </resources>

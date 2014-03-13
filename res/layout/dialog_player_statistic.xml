@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#0099cc"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/groundBall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ground_ball"
+        android:onClick="trackGroundBall"
+        android:textColor="#FFF" />
+
+    <Button
+        android:id="@+id/assist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assist"
+        android:onClick="trackAssist"
+        android:textColor="#FFF" />
+
+    <Button
+        android:id="@+id/goal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/goal"
+        android:onClick="trackGoal"        
+        android:textColor="#FFF" />
+
+    <RelativeLayout
+        android:id="@+id/InnerRelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/cancel"
+            style="?buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="back"
+            android:text="@string/back" >
+        </Button>
+    </RelativeLayout>
+
+</LinearLayout>

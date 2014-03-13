@@ -1,16 +1,24 @@
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gameRosterList"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="48dp"
-    android:background="#0099cc" >
-    
+    android:layout_height="fill_parent"
+    android:background="#0099cc"
+    android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/yourTeamLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/your_team"
+        android:textColor="#FFF" />
 
-    
+    <ListView
+        android:id="@+id/gameRosterList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0099cc" >
+    </ListView>
 
-
-
-
-</ListView>
+</LinearLayout>
