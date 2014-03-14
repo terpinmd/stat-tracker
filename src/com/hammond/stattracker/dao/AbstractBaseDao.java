@@ -1,5 +1,6 @@
 package com.hammond.stattracker.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -18,6 +19,8 @@ public class AbstractBaseDao extends SQLiteOpenHelper{
 		db.execSQL(SchemaDefinition.getCreatePlayerTableSql());
 		db.execSQL(SchemaDefinition.getCreateGameTableSql());
 		db.execSQL(SchemaDefinition.getCreateGameStatisticsTableSql());
+		db.execSQL(SchemaDefinition.getCreateStatisticsTableSql());
+		createDefaultStatistics(db);
 	}
 
 	@Override
@@ -26,4 +29,21 @@ public class AbstractBaseDao extends SQLiteOpenHelper{
 		
 	}
 	
+	
+	private void createDefaultStatistics(SQLiteDatabase db){
+		ContentValues values = new ContentValues();		
+		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME, "GROUND BALL");
+		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
+		db.insert(SchemaDefinition.TABLE_NAME_STATISTIC, null, values);
+		
+		values = new ContentValues();		
+		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME, "ASSIST");
+		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
+		db.insert(SchemaDefinition.TABLE_NAME_STATISTIC, null, values);
+		
+		values = new ContentValues();		
+		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME, "GOAL");
+		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
+		db.insert(SchemaDefinition.TABLE_NAME_STATISTIC, null, values);
+	}
 }

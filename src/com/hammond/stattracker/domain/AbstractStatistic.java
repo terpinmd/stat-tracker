@@ -1,23 +1,20 @@
 package com.hammond.stattracker.domain;
 
-public abstract class AbstractStatistic {
+public abstract class AbstractStatistic extends AbstractDomainClass{
+	
+	private static final long serialVersionUID = 1L;
+	
+	private String name;
+	
+	public abstract String getSport();
 
-	private int count = 0;
-	
-	public void increment(){
-		count++;
+
+	public String getName() {
+		return name;
 	}
-	
-	public void decrement(){
-		count--;
+
+	public void setName(String name) {
+		this.name = name;
 	}	
-	
-	public void reset(){
-		count = 0;
-	}
-	
-	public int getCount(){
-		return count;
-	}
 	
 }
