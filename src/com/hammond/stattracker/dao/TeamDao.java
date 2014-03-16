@@ -8,10 +8,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.hammond.stattracker.dao.db.SchemaDefinition;
+import static com.hammond.stattracker.dao.db.TeamDefinition.*;
 import com.hammond.stattracker.domain.Team;
 
-public class TeamDao extends AbstractBaseDao {
+public class TeamDao extends AbstractBaseDao<Team> {
 
 	public TeamDao(Context context) {
 		super(context);
@@ -26,8 +26,8 @@ public class TeamDao extends AbstractBaseDao {
 	public Team create(Team team){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_TEAM_NAME, team.getName());
-		long id = db.insert(SchemaDefinition.TABLE_NAME_TEAM, null, values);	
+		values.put(COLUMN_TEAM_NAME, team.getName());
+		long id = db.insert(TABLE_NAME_TEAM, null, values);	
 		team.setId(id);
 		return team;
 	}
@@ -36,8 +36,8 @@ public class TeamDao extends AbstractBaseDao {
 	public void save(Team team){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_TEAM_NAME, team.getName());
-		db.update(SchemaDefinition.TABLE_NAME_TEAM, values, "id = ?", new String[] {team.getId().toString()});
+		values.put(COLUMN_TEAM_NAME, team.getName());
+		db.update(TABLE_NAME_TEAM, values, "id = ?", new String[] {team.getId().toString()});
 	}
 	
 	
@@ -48,7 +48,7 @@ public class TeamDao extends AbstractBaseDao {
 		
 		if (cursor.moveToFirst()) {
 			do {
-				teams.add(getTeam(cursor));
+				teams.add(build(cursor));
 			} while (cursor.moveToNext());
 		}
 		return teams;
@@ -58,13 +58,14 @@ public class TeamDao extends AbstractBaseDao {
 	public Team getTeam(Long id){
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery("select * from team where id = ?", new String[] {id.toString()});
-		return this.getTeam(cursor);
+		return this.build(cursor);
 	}
 	
-	private Team getTeam(Cursor cursor){
+	@Override
+	protected Team build(Cursor cursor){
 		Team team = new Team();
-		team.setName(cursor.getString(cursor.getColumnIndex(SchemaDefinition.COLUMN_TEAM_NAME)));
-		team.setId(cursor.getLong(cursor.getColumnIndex(SchemaDefinition.ID)));
+		team.setName(cursor.getString(cursor.getColumnIndex(COLUMN_TEAM_NAME)));
+		team.setId(cursor.getLong(cursor.getColumnIndex(ID)));
 		return team;
 	}
 	

@@ -48,24 +48,7 @@ public class SchemaDefinition {
 	
 	
 	
-    public static final String TABLE_NAME_GAME = "game";
-    public static final String COLUMN_GAME_TITLE = "title";
-    public static final String COLUMN_GAME_DATE = "game_date";
-    public static final String COLUMN_GAME_NOTES = "notes";
 
-	public static String getCreateGameTableSql(){
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("CREATE TABLE ").append(TABLE_NAME_GAME);
-		buffer.append("(");
-			buffer.append(ID).append(" INTEGER PRIMARY KEY").append(",");
-			buffer.append(COLUMN_TEAM).append(" INTEGER ").append(",");
-			buffer.append(COLUMN_GAME_TITLE).append(" TEXT").append(",");
-			buffer.append(COLUMN_GAME_DATE).append(" INTEGER").append(",");
-			buffer.append(COLUMN_GAME_NOTES).append(" TEXT");
-		buffer.append(")");		
-		return  buffer.toString();
-	}
-	
 	public static final String TABLE_NAME_STATISTIC = "statistic";
 	public static final String COLUMN_NAME_STATISTIC_SPORT  = "sport";
 	public static final String COLUMN_NAME_STATISTIC_NAME = "statistic_name";

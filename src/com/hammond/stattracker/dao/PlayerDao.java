@@ -12,7 +12,7 @@ import com.hammond.stattracker.dao.db.SchemaDefinition;
 import com.hammond.stattracker.domain.Player;
 import com.hammond.stattracker.domain.Team;
 
-public class PlayerDao extends AbstractBaseDao{
+public class PlayerDao extends AbstractBaseDao<Player>{
 
 	TeamDao teamDaoImpl;
 	
@@ -71,7 +71,7 @@ public class PlayerDao extends AbstractBaseDao{
 		
 		if (cursor.moveToFirst()) {
 			do {
-				players.add(getPlayer(cursor));
+				players.add(build(cursor));
 			} while (cursor.moveToNext());
 		}
 		
@@ -87,14 +87,14 @@ public class PlayerDao extends AbstractBaseDao{
 	
 		if (cursor.moveToFirst()) {
 			do {
-				players.add(getPlayer(cursor));
+				players.add(build(cursor));
 			} while (cursor.moveToNext());
 		}
 		return players;
 	}
 
-	
-	private Player getPlayer(Cursor cursor){
+	@Override
+	protected Player build(Cursor cursor){
 		Player player = new Player();
 		player.setId(cursor.getLong(cursor.getColumnIndex(SchemaDefinition.ID)));
 		

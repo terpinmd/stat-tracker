@@ -2,12 +2,14 @@ package com.hammond.stattracker.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.hammond.stattracker.dao.db.GameSchema;
 import com.hammond.stattracker.dao.db.SchemaDefinition;
 
-public class AbstractBaseDao extends SQLiteOpenHelper{
+public abstract class AbstractBaseDao<T> extends SQLiteOpenHelper{
 
 	public AbstractBaseDao(Context context) {
 		super(context, SchemaDefinition.DATABASE_NAME, null, SchemaDefinition.DATABASE_VERSION);
@@ -17,7 +19,7 @@ public class AbstractBaseDao extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(SchemaDefinition.getCreateTeamTableSql());
 		db.execSQL(SchemaDefinition.getCreatePlayerTableSql());
-		db.execSQL(SchemaDefinition.getCreateGameTableSql());
+		db.execSQL(GameSchema.getCreateGameTableSql());
 		db.execSQL(SchemaDefinition.getCreateGameStatisticsTableSql());
 		db.execSQL(SchemaDefinition.getCreateStatisticsTableSql());
 		createDefaultStatistics(db);
@@ -46,4 +48,6 @@ public class AbstractBaseDao extends SQLiteOpenHelper{
 		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
 		db.insert(SchemaDefinition.TABLE_NAME_STATISTIC, null, values);
 	}
+	
+	protected abstract T build(Cursor c);
 }

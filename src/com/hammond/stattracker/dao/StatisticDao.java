@@ -14,7 +14,7 @@ import com.hammond.stattracker.domain.AbstractStatistic;
 import com.hammond.stattracker.domain.LacrosseStatistic;
 import com.hammond.stattracker.domain.Player;
 
-public class StatisticDao extends AbstractBaseDao {
+public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 
 	public StatisticDao(Context context) {
 		super(context);
@@ -40,7 +40,7 @@ public class StatisticDao extends AbstractBaseDao {
 		
 		if (cursor.moveToFirst()) {
 			do {
-				items.add(get(cursor));
+				items.add(build(cursor));
 			} while (cursor.moveToNext());
 		}
 		
@@ -61,16 +61,10 @@ public class StatisticDao extends AbstractBaseDao {
 								 SchemaDefinition.ID);
 		
 		cursor.moveToFirst();
-		return get(cursor);
+		return build(cursor);
 	}
 	
-	private AbstractStatistic get(Cursor cursor){
-		AbstractStatistic item = new LacrosseStatistic();
-		item.setName(cursor.getString(cursor.getColumnIndex(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME)));
-		return item;
-	}
-	
-	
+
 	public void save(AbstractStatistic statistic, int gameId, Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
@@ -80,11 +74,6 @@ public class StatisticDao extends AbstractBaseDao {
 		db.insert(SchemaDefinition.TABLE_NAME_GAME_STATISTICS, null, values);
 	}
 	
-	//select statistic_id as "statistic", count(statistic_id)
-	//FROM marketplace.game_statistics
-	//group by statistic_id
-
-
 	
 	//This should be a group by query so the results are like:
 	// Player, Sport, Statistic, count
@@ -92,34 +81,17 @@ public class StatisticDao extends AbstractBaseDao {
 		List<AbstractStatistic> items = new ArrayList<AbstractStatistic>();
 		SQLiteDatabase db = this.getReadableDatabase();
 		
-		System.out.println("player" + player);
-	
-		Cursor tmp = db.rawQuery("select * from game_statistics", null);
 		
-		if(tmp.moveToFirst()){
-			do{
-				StringBuffer buffer = new StringBuffer();
-				buffer.append("insert into game_statistics (game_id, player_id, statistic_id) values (");
-				buffer.append(tmp.getInt(1)).append(", ");
-				buffer.append(tmp.getInt(2)).append(", ");
-				buffer.append(tmp.getInt(3));
-				buffer.append(");");
-				System.out.println(buffer.toString());
-				DatabaseUtils.dumpCurrentRow(tmp);
-			}while (tmp.moveToNext());
-		}
+		Cursor cursor = db.query(SchemaDefinition.TABLE_NAME_GAME_STATISTICS, 
+								 new String[] {SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, " count(" + SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID +") "}, 
+								 SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_PLAYER_ID + " = ?", 
+								 new String[]{player.getId().toString()}, 
+								 SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID , 
+								 null, 
+								 SchemaDefinition.ID);
 		
-		
-//		Cursor cursor = db.query(SchemaDefinition.TABLE_NAME_GAME_STATISTICS, 
-//								 new String[] {SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, " count(" + SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID +") "}, 
-//								 SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_PLAYER_ID + " = ?", 
-//								 new String[]{player.getId().toString()}, 
-//								 SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID , 
-//								 null, 
-//								 SchemaDefinition.ID);
-		
-		Cursor cursor = db.rawQuery("SELECT count(*), statistic_id FROM  game_statistics WHERE player_id = ? and game = ? group by statistic_id", 
-									new String[]{player.getId().toString(), "1"});
+		//Cursor cursor = db.rawQuery("SELECT count(*), statistic_id FROM  game_statistics WHERE player_id = ? and game_id = ? group by statistic_id", 
+		//							new String[]{player.getId().toString(), "1"});
 		
 		if (cursor.moveToFirst()) {
 			do {
@@ -128,6 +100,14 @@ public class StatisticDao extends AbstractBaseDao {
 		}
 		
 		return items;
+	}
+	
+	
+	@Override
+	protected AbstractStatistic build(Cursor cursor){
+		AbstractStatistic item = new LacrosseStatistic();
+		item.setName(cursor.getString(cursor.getColumnIndex(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME)));
+		return item;
 	}
 	
 }
