@@ -17,12 +17,11 @@ import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.LacrosseStatistic;
 import com.hammond.stattracker.domain.Player;
 import com.hammond.stattracker.domain.Team;
-import com.hammond.stattracker.service.PlayerService;
 import com.hammond.stattracker.service.StatisticService;
+import com.hammond.stattracker.ui.components.PlayerStatisticsAdapter;
 
 public class PlayGameActivity extends Activity {
 
-	private PlayerService playerService;
 	
 	private StatisticService statisticService;
 
@@ -33,14 +32,12 @@ public class PlayGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_game);	
 		
-		playerService = new PlayerService(this);
 		statisticService = new StatisticService(this);
 		final Team team = (Team) this.getIntent().getSerializableExtra("team");
 		final Game game = (Game) this.getIntent().getSerializableExtra("game");			
 		
 		final ListView listView = (ListView) findViewById(R.id.gameRosterList);
-		ArrayAdapter<Player> adapter 
-			= new ArrayAdapter<Player>(this,  android.R.layout.simple_spinner_dropdown_item, this.playerService.getPlayersForTeam(team));
+		ArrayAdapter<Player> adapter = new PlayerStatisticsAdapter(this,  team);
 		listView.setAdapter(adapter);
 		listView.setTextFilterEnabled(true);
 
