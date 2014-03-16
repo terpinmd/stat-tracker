@@ -24,10 +24,6 @@ public class PlayGameActivity extends Activity {
 
 	private PlayerService playerService;
 	
-	private Team team;
-	
-	private Game game;
-	
 	private StatisticService statisticService;
 
 	private Context context = this;
@@ -35,20 +31,16 @@ public class PlayGameActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_play_game);	
+		
 		playerService = new PlayerService(this);
 		statisticService = new StatisticService(this);
-		this.team = (Team) this.getIntent().getSerializableExtra("team");
-		this.game = (Game) this.getIntent().getSerializableExtra("game");
-		// no more this
-		// setContentView(R.layout.list_fruit);
-
-		//setListAdapter(new ArrayAdapter<String>(this, R.layout.player_game_row_layout,	getPlayerNames()));
-
-		setContentView(R.layout.activity_play_game);
-		
+		final Team team = (Team) this.getIntent().getSerializableExtra("team");
+		final Game game = (Game) this.getIntent().getSerializableExtra("game");			
 		
 		final ListView listView = (ListView) findViewById(R.id.gameRosterList);
-		ArrayAdapter<Player> adapter = new ArrayAdapter<Player>(this,  android.R.layout.simple_spinner_dropdown_item, this.playerService.getPlayersForTeam(team));
+		ArrayAdapter<Player> adapter 
+			= new ArrayAdapter<Player>(this,  android.R.layout.simple_spinner_dropdown_item, this.playerService.getPlayersForTeam(team));
 		listView.setAdapter(adapter);
 		listView.setTextFilterEnabled(true);
 
@@ -65,16 +57,26 @@ public class PlayGameActivity extends Activity {
 				((Button) dialog.findViewById(R.id.groundBall)).setOnClickListener(new OnClickListener(){
 					@Override
 					public void onClick(View view) {
-						System.out.println("clickked!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-						statisticService.groundBall(new LacrosseStatistic(), game, player);
+						statisticService.save(new LacrosseStatistic("GROUND_BALL"), game, player);
+					}			
+				});
+				
+				((Button) dialog.findViewById(R.id.assist)).setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View view) {
+						statisticService.save(new LacrosseStatistic("ASSIST"), game, player);
+					}			
+				});
+				
+				((Button) dialog.findViewById(R.id.goal)).setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View view) {
+						statisticService.save(new LacrosseStatistic("GOAL"), game, player);
 					}			
 				});
 			}
 		});
 
-		
-		
-		this.statisticService.getAllBySport();
 	}
 
 }

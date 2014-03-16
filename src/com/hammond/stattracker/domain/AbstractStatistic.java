@@ -4,17 +4,20 @@ public abstract class AbstractStatistic extends AbstractDomainClass{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String name;
+	private String statisticType;
+
 	
-	public abstract String getSport();
-
-
-	public String getName() {
-		return name;
+	public AbstractStatistic(String statisticType){
+		this.statisticType = statisticType;
+	}
+	
+	
+	public String getStatisticType() {
+		return statisticType;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}	
+	public void setStatisticType(String statisticType) {
+		this.statisticType = statisticType;
+	}
 	
 }

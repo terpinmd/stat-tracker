@@ -8,7 +8,6 @@ import com.hammond.stattracker.dao.GameDao;
 import com.hammond.stattracker.dao.StatisticDao;
 import com.hammond.stattracker.domain.AbstractStatistic;
 import com.hammond.stattracker.domain.Game;
-import com.hammond.stattracker.domain.LacrosseStatistic;
 import com.hammond.stattracker.domain.Player;
 
 
@@ -25,9 +24,7 @@ public class StatisticService {
 		this.gameDao = new GameDao(activity);
 	}
 	
-	public void groundBall(AbstractStatistic abstractStatistic, Game game, Player player){
-		abstractStatistic.setName(LacrosseStatistic.GROUND_BALL);
-		
+	public void save(AbstractStatistic abstractStatistic, Game game, Player player){
 		if(game.getId() == null)
 			this.gameDao.create(game);
 		statisticDao.save(abstractStatistic, game , player);
@@ -37,21 +34,11 @@ public class StatisticService {
 	
 	public List<AbstractStatistic> getAllBySport(){
 		List<AbstractStatistic> statistics = this.statisticDao.getStatisticsBySport("LACROSSE");
-		
-		for(AbstractStatistic s : statistics){
-			System.out.println(s.getName());
-		}
-		
 		return statistics;
 	}
 	
 	public List<AbstractStatistic> getGameStatisticsByPlayer(Player player){
 		List<AbstractStatistic> statistics = this.statisticDao.getGameStatisticsByPlayer(player);
-		
-		for(AbstractStatistic s : statistics){
-			System.out.println(s.getName());
-		}
-		
 		return statistics;		
 	}
 	

@@ -114,8 +114,7 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 	
 	@Override
 	protected AbstractStatistic build(Cursor cursor){
-		AbstractStatistic item = new LacrosseStatistic();
-		item.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME_STATISTIC_NAME)));
+		AbstractStatistic item = new LacrosseStatistic(cursor.getString(cursor.getColumnIndex(COLUMN_NAME_STATISTIC_NAME)));
 		return item;
 	}
 	

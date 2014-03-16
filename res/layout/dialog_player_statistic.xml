@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ground_ball"
-        android:onClick="trackGroundBall"
         android:textColor="#FFF" />
 
     <Button
@@ -19,15 +18,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/assist"
-        android:onClick="trackAssist"
         android:textColor="#FFF" />
 
     <Button
         android:id="@+id/goal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/goal"
-        android:onClick="trackGoal"        
+        android:text="@string/goal"      
         android:textColor="#FFF" />
 
     <RelativeLayout
