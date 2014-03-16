@@ -21,6 +21,8 @@ public class GameDao extends AbstractBaseDao<Game> {
 		values.put(COLUMN_GAME_TITLE, game.getTitle());
 		values.put( COLUMN_TEAM, game.getGameId());
 		values.put(COLUMN_GAME_DATE, game.getDateTime());
+		values.put(COLUMN_MY_TEAM, game.getMyTeamId());
+		values.put(COLUMN_VS_TEAM, game.getVsTeamId());
 		values.put(COLUMN_GAME_NOTES, game.getNotes());	
 		long id = db.insert(TABLE_NAME_GAME, null, values);	
 		game.setId(id);

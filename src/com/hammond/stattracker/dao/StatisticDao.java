@@ -1,5 +1,14 @@
 package com.hammond.stattracker.dao;
 
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.COLUMN_NAME_GAME_STATISTICS_GAME_ID;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.COLUMN_NAME_GAME_STATISTICS_PLAYER_ID;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.COLUMN_NAME_STATISTIC_NAME;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.COLUMN_NAME_STATISTIC_SPORT;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.ID;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.TABLE_NAME_GAME_STATISTICS;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.TABLE_NAME_STATISTIC;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +18,8 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
-import static com.hammond.stattracker.dao.db.StatisticsDefinition.*;
 import com.hammond.stattracker.domain.AbstractStatistic;
+import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.LacrosseStatistic;
 import com.hammond.stattracker.domain.Player;
 
@@ -65,11 +74,11 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 	}
 	
 
-	public void save(AbstractStatistic statistic, int gameId, Player player){
+	public void save(AbstractStatistic statistic, Game game, Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
 		values.put(COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, 1);
-		values.put(COLUMN_NAME_GAME_STATISTICS_GAME_ID, gameId);
+		values.put(COLUMN_NAME_GAME_STATISTICS_GAME_ID, game.getId());
 		values.put(COLUMN_NAME_GAME_STATISTICS_PLAYER_ID, player.getId());
 		db.insert(TABLE_NAME_GAME_STATISTICS, null, values);
 	}

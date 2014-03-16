@@ -14,7 +14,7 @@
         android:textColor="#FFF" />
 
     <Spinner
-        android:id="@+id/select_team_spinner"
+        android:id="@+id/select_my_team_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:prompt="@string/team_label" />
@@ -27,7 +27,7 @@
         android:textColor="#FFF" />
 
     <Spinner
-        android:id="@+id/select_other_team_spinner"
+        android:id="@+id/select_vs_team_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:prompt="@string/team_label" />

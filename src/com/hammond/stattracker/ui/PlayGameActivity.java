@@ -1,8 +1,5 @@
 package com.hammond.stattracker.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -16,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.hammond.stattracker.R;
+import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.LacrosseStatistic;
 import com.hammond.stattracker.domain.Player;
 import com.hammond.stattracker.domain.Team;
@@ -28,6 +26,8 @@ public class PlayGameActivity extends Activity {
 	
 	private Team team;
 	
+	private Game game;
+	
 	private StatisticService statisticService;
 
 	private Context context = this;
@@ -38,6 +38,7 @@ public class PlayGameActivity extends Activity {
 		playerService = new PlayerService(this);
 		statisticService = new StatisticService(this);
 		this.team = (Team) this.getIntent().getSerializableExtra("team");
+		this.game = (Game) this.getIntent().getSerializableExtra("game");
 		// no more this
 		// setContentView(R.layout.list_fruit);
 
@@ -65,7 +66,7 @@ public class PlayGameActivity extends Activity {
 					@Override
 					public void onClick(View view) {
 						System.out.println("clickked!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-						statisticService.groundBall(new LacrosseStatistic(), 1, player);
+						statisticService.groundBall(new LacrosseStatistic(), game, player);
 					}			
 				});
 			}
@@ -75,15 +76,5 @@ public class PlayGameActivity extends Activity {
 		
 		this.statisticService.getAllBySport();
 	}
-	
-	
-	
-	
-	private List<String> getPlayerNames(){
-		List<String> players = new ArrayList<String>();
-		for(Player player : this.playerService.getPlayersForTeam(team)){
-			players.add(player.toString());
-		}
-		return players;
-	}
+
 }

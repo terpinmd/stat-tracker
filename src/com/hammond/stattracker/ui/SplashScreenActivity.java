@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.hammond.stattracker.R;
+import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.Team;
 import com.hammond.stattracker.ui.admin.TeamManagementActivity;
 import com.hammond.stattracker.ui.components.TeamSpinnerAdapter;
@@ -32,6 +33,7 @@ public class SplashScreenActivity extends Activity {
     	
     	// custom dialog
 		final Dialog dialog = new Dialog(this);
+		final Game game = new Game();
 		dialog.setContentView(R.layout.dialog_start_game);
 		dialog.setTitle("Start a game");
     	
@@ -43,6 +45,14 @@ public class SplashScreenActivity extends Activity {
 			public void onClick(View view) {
 				Intent intent = new Intent(context, PlayGameActivity.class); 				
 				intent.putExtra("team", (Team) teamSpinner.getSelectedItem());
+				Team myTeam = (Team) (((Spinner) dialog.findViewById(R.id.select_my_team_spinner)).getSelectedItem());
+				game.setMyTeamId(myTeam.getId());
+								
+				Team vsTeam = (Team) (((Spinner) dialog.findViewById(R.id.select_vs_team_spinner)).getSelectedItem());
+				game.setVsTeamId(vsTeam.getId());
+				
+				intent.putExtra("game", game);
+				
 				startActivity(intent);
 			}			
 		});
@@ -57,12 +67,12 @@ public class SplashScreenActivity extends Activity {
     }
 
 	public void buildTeamSpinner(Dialog dialog){
-    	teamSpinner = (Spinner) dialog.findViewById(R.id.select_team_spinner);
+    	teamSpinner = (Spinner) dialog.findViewById(R.id.select_my_team_spinner);
     	teamSpinner.setAdapter(new TeamSpinnerAdapter(context));
     }
 	
 	public void buildOtherTeamSpinner(Dialog dialog){
-    	Spinner spinner = (Spinner) dialog.findViewById(R.id.select_other_team_spinner);
+    	Spinner spinner = (Spinner) dialog.findViewById(R.id.select_vs_team_spinner);
        	spinner.setAdapter(new TeamSpinnerAdapter(context));
     }
 }
