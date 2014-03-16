@@ -7,21 +7,27 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.hammond.stattracker.dao.db.GameSchema;
-import com.hammond.stattracker.dao.db.SchemaDefinition;
-
+import com.hammond.stattracker.dao.db.PlayerDefinition;
+import com.hammond.stattracker.dao.db.StatisticsDefinition;
+import com.hammond.stattracker.dao.db.TeamDefinition;
 public abstract class AbstractBaseDao<T> extends SQLiteOpenHelper{
 
+	
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "Statistics.db";
+
+	
 	public AbstractBaseDao(Context context) {
-		super(context, SchemaDefinition.DATABASE_NAME, null, SchemaDefinition.DATABASE_VERSION);
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(SchemaDefinition.getCreateTeamTableSql());
-		db.execSQL(SchemaDefinition.getCreatePlayerTableSql());
+		db.execSQL(TeamDefinition.getCreateTeamTableSql());
+		db.execSQL(PlayerDefinition.getCreatePlayerTableSql());
 		db.execSQL(GameSchema.getCreateGameTableSql());
-		db.execSQL(SchemaDefinition.getCreateGameStatisticsTableSql());
-		db.execSQL(SchemaDefinition.getCreateStatisticsTableSql());
+		db.execSQL(StatisticsDefinition.getCreateGameStatisticsTableSql());
+		db.execSQL(StatisticsDefinition.getCreateStatisticsTableSql());
 		createDefaultStatistics(db);
 	}
 
@@ -34,19 +40,19 @@ public abstract class AbstractBaseDao<T> extends SQLiteOpenHelper{
 	
 	private void createDefaultStatistics(SQLiteDatabase db){
 		ContentValues values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME, "GROUND BALL");
-		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
-		db.insert(SchemaDefinition.TABLE_NAME_STATISTIC, null, values);
+		values.put(StatisticsDefinition.COLUMN_NAME_STATISTIC_NAME, "GROUND BALL");
+		values.put(StatisticsDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
+		db.insert(StatisticsDefinition.TABLE_NAME_STATISTIC, null, values);
 		
 		values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME, "ASSIST");
-		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
-		db.insert(SchemaDefinition.TABLE_NAME_STATISTIC, null, values);
+		values.put(StatisticsDefinition.COLUMN_NAME_STATISTIC_NAME, "ASSIST");
+		values.put(StatisticsDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
+		db.insert(StatisticsDefinition.TABLE_NAME_STATISTIC, null, values);
 		
 		values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME, "GOAL");
-		values.put(SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
-		db.insert(SchemaDefinition.TABLE_NAME_STATISTIC, null, values);
+		values.put(StatisticsDefinition.COLUMN_NAME_STATISTIC_NAME, "GOAL");
+		values.put(StatisticsDefinition.COLUMN_NAME_STATISTIC_SPORT, "LACROSSE");
+		db.insert(StatisticsDefinition.TABLE_NAME_STATISTIC, null, values);
 	}
 	
 	protected abstract T build(Cursor c);

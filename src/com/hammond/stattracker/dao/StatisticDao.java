@@ -9,7 +9,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.hammond.stattracker.dao.db.SchemaDefinition;
+import static com.hammond.stattracker.dao.db.StatisticsDefinition.*;
 import com.hammond.stattracker.domain.AbstractStatistic;
 import com.hammond.stattracker.domain.LacrosseStatistic;
 import com.hammond.stattracker.domain.Player;
@@ -30,13 +30,13 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 		List<AbstractStatistic> items = new ArrayList<AbstractStatistic>();
 		SQLiteDatabase db = this.getReadableDatabase();
 	
-		Cursor cursor = db.query(SchemaDefinition.TABLE_NAME_STATISTIC, 
+		Cursor cursor = db.query(TABLE_NAME_STATISTIC, 
 								 null, 
-								 SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT + " = ?", 
+								 COLUMN_NAME_STATISTIC_SPORT + " = ?", 
 								 new String[]{sport}, 
 								 null, 
 								 null, 
-								 SchemaDefinition.ID);
+								 ID);
 		
 		if (cursor.moveToFirst()) {
 			do {
@@ -51,14 +51,14 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 	
-		Cursor cursor = db.query(SchemaDefinition.TABLE_NAME_STATISTIC, 
+		Cursor cursor = db.query(TABLE_NAME_STATISTIC, 
 								 null, 
-								 SchemaDefinition.COLUMN_NAME_STATISTIC_SPORT + " = ? and " + 
-										 SchemaDefinition.COLUMN_NAME_STATISTIC_NAME + " = ?" , 
+								 COLUMN_NAME_STATISTIC_SPORT + " = ? and " + 
+										 COLUMN_NAME_STATISTIC_NAME + " = ?" , 
 								 new String[]{sport, name}, 
 								 null, 
 								 null, 
-								 SchemaDefinition.ID);
+								 ID);
 		
 		cursor.moveToFirst();
 		return build(cursor);
@@ -68,10 +68,10 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 	public void save(AbstractStatistic statistic, int gameId, Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, 1);
-		values.put(SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_GAME_ID, gameId);
-		values.put(SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_PLAYER_ID, player.getId());
-		db.insert(SchemaDefinition.TABLE_NAME_GAME_STATISTICS, null, values);
+		values.put(COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, 1);
+		values.put(COLUMN_NAME_GAME_STATISTICS_GAME_ID, gameId);
+		values.put(COLUMN_NAME_GAME_STATISTICS_PLAYER_ID, player.getId());
+		db.insert(TABLE_NAME_GAME_STATISTICS, null, values);
 	}
 	
 	
@@ -82,13 +82,13 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 		SQLiteDatabase db = this.getReadableDatabase();
 		
 		
-		Cursor cursor = db.query(SchemaDefinition.TABLE_NAME_GAME_STATISTICS, 
-								 new String[] {SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, " count(" + SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID +") "}, 
-								 SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_PLAYER_ID + " = ?", 
+		Cursor cursor = db.query(TABLE_NAME_GAME_STATISTICS, 
+								 new String[] {COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, " count(" + COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID +") "}, 
+								 COLUMN_NAME_GAME_STATISTICS_PLAYER_ID + " = ?", 
 								 new String[]{player.getId().toString()}, 
-								 SchemaDefinition.COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID , 
+								 COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID , 
 								 null, 
-								 SchemaDefinition.ID);
+								 ID);
 		
 		//Cursor cursor = db.rawQuery("SELECT count(*), statistic_id FROM  game_statistics WHERE player_id = ? and game_id = ? group by statistic_id", 
 		//							new String[]{player.getId().toString(), "1"});
@@ -106,7 +106,7 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 	@Override
 	protected AbstractStatistic build(Cursor cursor){
 		AbstractStatistic item = new LacrosseStatistic();
-		item.setName(cursor.getString(cursor.getColumnIndex(SchemaDefinition.COLUMN_NAME_STATISTIC_NAME)));
+		item.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME_STATISTIC_NAME)));
 		return item;
 	}
 	

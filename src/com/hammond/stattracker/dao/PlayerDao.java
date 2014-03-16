@@ -8,7 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.hammond.stattracker.dao.db.SchemaDefinition;
+import static com.hammond.stattracker.dao.db.PlayerDefinition.*;
 import com.hammond.stattracker.domain.Player;
 import com.hammond.stattracker.domain.Team;
 
@@ -31,28 +31,28 @@ public class PlayerDao extends AbstractBaseDao<Player>{
 	public void create(Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_FIRST_NAME, player.getFirstName());
-		values.put(SchemaDefinition.COLUMN_LAST_NAME, player.getLastName());
-		values.put(SchemaDefinition.COLUMN_TEAM, player.getTeam().getId());
-		values.put(SchemaDefinition.COLUMN_JERSEY_NUMBER, player.getJersyNumber());	
-		db.insert(SchemaDefinition.TABLE_NAME_PLAYER, null, values);	
+		values.put(COLUMN_FIRST_NAME, player.getFirstName());
+		values.put(COLUMN_LAST_NAME, player.getLastName());
+		values.put(COLUMN_TEAM, player.getTeam().getId());
+		values.put(COLUMN_JERSEY_NUMBER, player.getJersyNumber());	
+		db.insert(TABLE_NAME_PLAYER, null, values);	
 	}
 	
 	
 	public void save(Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
-		values.put(SchemaDefinition.COLUMN_FIRST_NAME, player.getFirstName());
-		values.put(SchemaDefinition.COLUMN_LAST_NAME, player.getLastName());
-		values.put(SchemaDefinition.COLUMN_TEAM, player.getTeam().getId());
-		values.put(SchemaDefinition.COLUMN_JERSEY_NUMBER, player.getJersyNumber());	
-		db.update(SchemaDefinition.TABLE_NAME_PLAYER, values, "id = ?", new String[] {player.getId().toString()});
+		values.put(COLUMN_FIRST_NAME, player.getFirstName());
+		values.put(COLUMN_LAST_NAME, player.getLastName());
+		values.put(COLUMN_TEAM, player.getTeam().getId());
+		values.put(COLUMN_JERSEY_NUMBER, player.getJersyNumber());	
+		db.update(TABLE_NAME_PLAYER, values, "id = ?", new String[] {player.getId().toString()});
 	}
 	
 	
 	public void delete(Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
-		db.delete(SchemaDefinition.TABLE_NAME_PLAYER, "id = ?", new String[] {player.getId().toString()});
+		db.delete(TABLE_NAME_PLAYER, "id = ?", new String[] {player.getId().toString()});
 	}
 	
 	
@@ -61,13 +61,13 @@ public class PlayerDao extends AbstractBaseDao<Player>{
 		List<Player> players = new ArrayList<Player>();
 		SQLiteDatabase db = this.getReadableDatabase();
 	
-		Cursor cursor = db.query(SchemaDefinition.TABLE_NAME_PLAYER, 
+		Cursor cursor = db.query(TABLE_NAME_PLAYER, 
 								 null, 
-								 SchemaDefinition.COLUMN_TEAM + " = ?", 
+								 COLUMN_TEAM + " = ?", 
 								 new String[]{team.getId().toString()}, 
 								 null, 
 								 null, 
-								 SchemaDefinition.COLUMN_JERSEY_NUMBER);
+								 COLUMN_JERSEY_NUMBER);
 		
 		if (cursor.moveToFirst()) {
 			do {
@@ -96,13 +96,13 @@ public class PlayerDao extends AbstractBaseDao<Player>{
 	@Override
 	protected Player build(Cursor cursor){
 		Player player = new Player();
-		player.setId(cursor.getLong(cursor.getColumnIndex(SchemaDefinition.ID)));
+		player.setId(cursor.getLong(cursor.getColumnIndex(ID)));
 		
-		//player.setTeam(teamDaoImpl.getTeam(cursor.getLong(cursor.getColumnIndex(SchemaDefinition.COLUMN_TEAM))));
+		//player.setTeam(teamDaoImpl.getTeam(cursor.getLong(cursor.getColumnIndex(COLUMN_TEAM))));
 		
-		player.setFirstName(cursor.getString(cursor.getColumnIndex(SchemaDefinition.COLUMN_FIRST_NAME)));
-		player.setLastName(cursor.getString(cursor.getColumnIndex(SchemaDefinition.COLUMN_LAST_NAME)));
-		player.setJersyNumber(cursor.getInt(cursor.getColumnIndex(SchemaDefinition.COLUMN_JERSEY_NUMBER)));
+		player.setFirstName(cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)));
+		player.setLastName(cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME)));
+		player.setJersyNumber(cursor.getInt(cursor.getColumnIndex(COLUMN_JERSEY_NUMBER)));
 		return player;
 	}
 
