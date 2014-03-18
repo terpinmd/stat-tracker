@@ -86,15 +86,15 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 	
 	//This should be a group by query so the results are like:
 	// Player, Sport, Statistic, count
-	public List<AbstractStatistic> getGameStatisticsByPlayer(Player player){
+	public List<AbstractStatistic> getGameStatisticsByPlayer(Player player, Game game){
 		List<AbstractStatistic> items = new ArrayList<AbstractStatistic>();
 		SQLiteDatabase db = this.getReadableDatabase();
 		
 		
 		Cursor cursor = db.query(TABLE_NAME_GAME_STATISTICS, 
 								 new String[] {COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, " count(" + COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID +") "}, 
-								 COLUMN_NAME_GAME_STATISTICS_PLAYER_ID + " = ?", 
-								 new String[]{player.getId().toString()}, 
+								 COLUMN_NAME_GAME_STATISTICS_PLAYER_ID + " = ? and " + COLUMN_NAME_GAME_STATISTICS_GAME_ID + " = ?", 
+								 new String[]{player.getId().toString(), game.getId().toString()}, 
 								 COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID , 
 								 null, 
 								 ID);
@@ -105,6 +105,7 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 		if (cursor.moveToFirst()) {
 			do {
 				DatabaseUtils.dumpCurrentRow(cursor);
+				
 			} while (cursor.moveToNext());
 		}
 		

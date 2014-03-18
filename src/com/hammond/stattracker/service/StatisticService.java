@@ -28,8 +28,6 @@ public class StatisticService {
 		if(game.getId() == null)
 			this.gameDao.create(game);
 		statisticDao.save(abstractStatistic, game , player);
-
-		getGameStatisticsByPlayer(player);
 	}
 	
 	public List<AbstractStatistic> getAllBySport(){
@@ -37,8 +35,8 @@ public class StatisticService {
 		return statistics;
 	}
 	
-	public List<AbstractStatistic> getGameStatisticsByPlayer(Player player){
-		List<AbstractStatistic> statistics = this.statisticDao.getGameStatisticsByPlayer(player);
+	public List<AbstractStatistic> getGameStatisticsByPlayer(Player player, Game game){
+		List<AbstractStatistic> statistics = this.statisticDao.getGameStatisticsByPlayer(player, game);
 		return statistics;		
 	}
 	

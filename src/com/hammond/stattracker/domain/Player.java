@@ -59,6 +59,8 @@ public class Player extends AbstractDomainClass{
 		return "#" + this.getJersyNumber() + ": " + this.getFirstName() + " " + this.getLastName();
 	}
 	
-	
+	public String toStringShort() {
+		return "#" + this.getJersyNumber() + ": " + this.getLastName();
+	}
 	
 }
