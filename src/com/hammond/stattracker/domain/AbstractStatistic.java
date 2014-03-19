@@ -6,6 +6,7 @@ public abstract class AbstractStatistic extends AbstractDomainClass{
 	
 	private String statisticType;
 
+	private Integer count;
 	
 	public AbstractStatistic(String statisticType){
 		this.statisticType = statisticType;
@@ -19,5 +20,14 @@ public abstract class AbstractStatistic extends AbstractDomainClass{
 	public void setStatisticType(String statisticType) {
 		this.statisticType = statisticType;
 	}
+
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}	
 	
 }

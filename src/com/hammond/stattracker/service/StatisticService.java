@@ -1,7 +1,5 @@
 package com.hammond.stattracker.service;
 
-import java.util.List;
-
 import android.app.Activity;
 
 import com.hammond.stattracker.dao.GameDao;
@@ -24,21 +22,12 @@ public class StatisticService {
 		this.gameDao = new GameDao(activity);
 	}
 	
-	public void save(AbstractStatistic abstractStatistic, Game game, Player player){
+	public void increment(AbstractStatistic statistic, Game game, Player player){
 		if(game.getId() == null)
 			this.gameDao.create(game);
-		statisticDao.save(abstractStatistic, game , player);
+		statisticDao.save(statistic, game , player);
+		int count = this.statisticDao.getStatisticCount(statistic, player, game);
+		statistic.setCount(count);
 	}
-	
-	public List<AbstractStatistic> getAllBySport(){
-		List<AbstractStatistic> statistics = this.statisticDao.getStatisticsBySport("LACROSSE");
-		return statistics;
-	}
-	
-	public List<AbstractStatistic> getGameStatisticsByPlayer(Player player, Game game){
-		List<AbstractStatistic> statistics = this.statisticDao.getGameStatisticsByPlayer(player, game);
-		return statistics;		
-	}
-	
 	
 }
