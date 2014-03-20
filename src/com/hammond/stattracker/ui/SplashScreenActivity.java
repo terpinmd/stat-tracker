@@ -12,12 +12,15 @@ import android.widget.Spinner;
 import com.hammond.stattracker.R;
 import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.Team;
+import com.hammond.stattracker.service.GameService;
 import com.hammond.stattracker.ui.admin.TeamManagementActivity;
 import com.hammond.stattracker.ui.components.TeamSpinnerAdapter;
 
 
 public class SplashScreenActivity extends Activity {
 
+	private GameService gameService;
+	
 	private final Activity context = this;
 
 	private Spinner teamSpinner;
@@ -25,6 +28,7 @@ public class SplashScreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        gameService = new GameService(this);
         setContentView(R.layout.activity_splash);
     }
 
@@ -51,6 +55,7 @@ public class SplashScreenActivity extends Activity {
 				Team vsTeam = (Team) (((Spinner) dialog.findViewById(R.id.select_vs_team_spinner)).getSelectedItem());
 				game.setVsTeamId(vsTeam.getId());
 				
+				gameService.save(game);
 				intent.putExtra("game", game);
 				
 				startActivity(intent);

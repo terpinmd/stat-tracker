@@ -1,97 +1,88 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/fullScreenActivityTheme"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+  <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/tableLayout1"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="48dp" >
 
-    <TableLayout
-        android:id="@+id/tableLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="48dp" >
+      <TableRow
+          android:id="@+id/tableRow1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="5dip" >
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip" >
+          <TextView
+              android:id="@+id/firstNameLabel"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/first_name_label"
+              android:textSize="10pt" />
 
-            <TextView
-                android:id="@+id/firstNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/first_name_label"
-                android:textSize="10pt" />
+          <EditText
+              android:id="@+id/firstNameText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:inputType="text" />
+      </TableRow>
 
-            <EditText
-                android:id="@+id/firstNameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </TableRow>
+      <TableRow
+          android:id="@+id/tableRow2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="5dip" >
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip" >
+          <TextView
+              android:id="@+id/lastNameLabel"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/last_name_label"
+              android:textSize="10pt" />
 
-            <TextView
-                android:id="@+id/lastNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/last_name_label"
-                android:textSize="10pt" />
+          <EditText
+              android:id="@+id/lastNameText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:inputType="text" />
+      </TableRow>
 
-            <EditText
-                android:id="@+id/lastNameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </TableRow>
+      <TableRow
+          android:id="@+id/tableRow3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="5dip" >
 
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip" >
+          <TextView
+              android:id="@+id/jerseyLabel"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/jersey_label"
+              android:textSize="10pt" />
 
-            <TextView
-                android:id="@+id/jerseyLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jersey_label"
-                android:textSize="10pt" />
+          <EditText
+              android:id="@+id/jerseyText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:inputType="number" />
+      </TableRow>
 
-            <EditText
-                android:id="@+id/jerseyText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </TableRow>
+      <RelativeLayout
+          android:id="@+id/InnerRelativeLayout"
+          style="@style/ButtonBar">
 
-        <RelativeLayout
-            android:id="@+id/InnerRelativeLayout"
-            style="@style/ButtonBar">
+          <Button
+              android:id="@+id/save"
+              style="@style/ButtonBarButton"
+              android:onClick="save"
+              android:layout_alignParentRight="true"
+              android:text="@string/save" >
+          </Button>
 
-            <Button
-                android:id="@+id/save"
-                style="@style/ButtonBarButton"
-                android:onClick="save"
-                android:layout_alignParentRight="true"
-                android:text="@string/save" >
-            </Button>
-
-            <Button
-                android:id="@+id/deleteButton"
-                style="@style/ButtonBarButton"
-                android:layout_toLeftOf="@+id/save"
-                android:onClick="delete"
-                android:text="@string/delete" >
-            </Button>
-        </RelativeLayout>
-    </TableLayout>
-
-    <!--  -->
-
-</RelativeLayout>
+          <Button
+              android:id="@+id/deleteButton"
+              style="@style/ButtonBarButton"
+              android:layout_toLeftOf="@+id/save"
+              android:onClick="delete"
+              android:text="@string/delete" >
+          </Button>
+      </RelativeLayout>
+  </TableLayout>

@@ -19,7 +19,6 @@ public class GameDao extends AbstractBaseDao<Game> {
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
 		values.put(COLUMN_GAME_TITLE, game.getTitle());
-		values.put( COLUMN_TEAM, game.getGameId());
 		values.put(COLUMN_GAME_DATE, game.getDateTime());
 		values.put(COLUMN_MY_TEAM, game.getMyTeamId());
 		values.put(COLUMN_VS_TEAM, game.getVsTeamId());
@@ -28,6 +27,17 @@ public class GameDao extends AbstractBaseDao<Game> {
 		game.setId(id);
 	}
 
+	
+	public void save(Game game){
+		SQLiteDatabase db = this.getWritableDatabase();		
+		ContentValues values = new ContentValues();		
+		values.put(COLUMN_GAME_TITLE, game.getTitle());
+		values.put(COLUMN_GAME_DATE, game.getDateTime());
+		values.put(COLUMN_MY_TEAM, game.getMyTeamId());
+		values.put(COLUMN_VS_TEAM, game.getVsTeamId());
+		values.put(COLUMN_GAME_NOTES, game.getNotes());	
+		db.update(TABLE_NAME_GAME, values, "id = ?", new String[]{ game.getId().toString() } );	
+	}
 
 
 	@Override

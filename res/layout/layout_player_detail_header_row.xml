@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="48dp" 
     style="fullScreenActivityTheme" >
 
     <TextView
@@ -13,19 +12,19 @@
 
     <TextView
         android:id="@+id/groundBallsHeader"
-        style="@style/statisticActionStyle"
+        style="@style/tableHeaderLabel"
         android:layout_toRightOf="@+id/playerNameHeader"
         android:text="@string/ground_ball" />
     
      <TextView
         android:id="@+id/assistsHeader"
-        style="@style/statisticActionStyle"
+        style="@style/tableHeaderLabel"
         android:layout_toRightOf="@+id/groundBallsHeader"
         android:text="@string/assist" />
      
       <TextView
         android:id="@+id/goalHeaders"
-        style="@style/statisticActionStyle"
+        style="@style/tableHeaderLabel"
         android:layout_toRightOf="@+id/assistsHeader"
         android:text="@string/goal" />
 
