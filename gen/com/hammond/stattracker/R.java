@@ -19,8 +19,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonBarStyle=0x7f010000;
     }
     public static final class color {
+        public static final int black=0x7f040002;
         public static final int black_overlay=0x7f040000;
+        public static final int green=0x7f040003;
         public static final int translucent_gray=0x7f040001;
+        public static final int yellow=0x7f040004;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -126,23 +129,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f060000;
         public static final int ButtonBar=0x7f060002;
         public static final int ButtonBarButton=0x7f060007;
-        public static final int FullscreenActionBarStyle=0x7f060009;
-        public static final int FullscreenTheme=0x7f060008;
         /**  Application theme. 
          */
         public static final int fullScreenActivityTheme=0x7f060001;
