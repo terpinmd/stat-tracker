@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fullScreenActivityTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0099cc" >
+    android:layout_height="match_parent" >
 
     <TableLayout
         android:id="@+id/tableLayout1"
@@ -50,23 +50,17 @@
                 android:layout_weight=".7" />
         </TableRow>
 
-        <TableRow
+        <RelativeLayout
             android:id="@+id/tableRow3"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="5dip"
-            android:paddingBottom="25dip" >
+            style="@style/ButtonBar" >
 
             <Button
                 android:id="@+id/addTeam"
-                style="?buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="right"
+                style="@style/ButtonBarButton"
+                android:layout_alignParentRight="true"
                 android:onClick="addTeam"
                 android:text="@string/add" />
-        </TableRow>
+        </RelativeLayout>
 
         <TableRow
             android:id="@+id/tableRow4"
@@ -118,16 +112,11 @@
 
         <RelativeLayout
             android:id="@+id/InnerRelativeLayout"
-            style="@style/ButtonBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_overlay" >
+            style="@style/ButtonBar" >
 
             <Button
                 android:id="@+id/addPlayer"
-                style="?buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/ButtonBarButton"
                 android:layout_alignParentRight="true"
                 android:onClick="addPlayer"
                 android:text="@string/add" >
@@ -135,9 +124,7 @@
 
             <Button
                 android:id="@+id/editPlayer"
-                style="?buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/ButtonBarButton"
                 android:layout_toLeftOf="@+id/addPlayer"
                 android:onClick="editRoster"
                 android:text="@string/edit" >

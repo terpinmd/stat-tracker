@@ -16,6 +16,7 @@
         android:layout_alignParentBottom="true"
         style="@style/ButtonBar">
 
+        <!--  http://stackoverflow.com/questions/15805926/button-highlight-in-android -->
         <Button
             android:id="@+id/team_management"
             style="@style/ButtonBarButton"

@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fullScreenActivityTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0099cc" >
+    android:layout_height="match_parent" >
 
     <TableLayout
         android:id="@+id/tableLayout1"
@@ -69,35 +69,29 @@
                 android:layout_height="wrap_content"
                 android:inputType="number" />
         </TableRow>
+
+        <RelativeLayout
+            android:id="@+id/InnerRelativeLayout"
+            style="@style/ButtonBar">
+
+            <Button
+                android:id="@+id/save"
+                style="@style/ButtonBarButton"
+                android:onClick="save"
+                android:layout_alignParentRight="true"
+                android:text="@string/save" >
+            </Button>
+
+            <Button
+                android:id="@+id/deleteButton"
+                style="@style/ButtonBarButton"
+                android:layout_toLeftOf="@+id/save"
+                android:onClick="delete"
+                android:text="@string/delete" >
+            </Button>
+        </RelativeLayout>
     </TableLayout>
 
     <!--  -->
-
-    <RelativeLayout
-        android:id="@+id/InnerRelativeLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
-
-        <Button
-            android:id="@+id/save"
-            style="?buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:onClick="save"
-            android:text="@string/save" >
-        </Button>
-
-        <Button
-            android:id="@+id/deleteButton"
-            style="?buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/save"
-            android:onClick="delete"
-            android:text="@string/delete" >
-        </Button>
-    </RelativeLayout>
 
 </RelativeLayout>
