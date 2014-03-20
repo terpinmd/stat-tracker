@@ -118,8 +118,10 @@
 
         <RelativeLayout
             android:id="@+id/InnerRelativeLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            style="@style/ButtonBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_overlay" >
 
             <Button
                 android:id="@+id/addPlayer"
@@ -143,9 +145,6 @@
         </RelativeLayout>
     </TableLayout>
 
-    
-    <include layout="@layout/layout_save_button_bar"/>
-    
-
+    <include layout="@layout/layout_save_button_bar" />
 
 </RelativeLayout>

@@ -3,27 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="48dp" 
     style="fullScreenActivityTheme" >
 
     <TextView
-        android:id="@+id/playerName"
+        android:id="@+id/playerNameHeader"
         android:layout_width="150sp"
-        android:layout_height="50sp"
-        style="@style/textViewLabelStyle" />
+        android:layout_height="50sp" />
 
     <TextView
-        android:id="@+id/groundBalls"
+        android:id="@+id/groundBallsHeader"
         style="@style/statisticActionStyle"
-        android:layout_toRightOf="@+id/playerName"/>
+        android:layout_toRightOf="@+id/playerNameHeader"
+        android:text="@string/ground_ball" />
     
      <TextView
-        android:id="@+id/assists"
+        android:id="@+id/assistsHeader"
         style="@style/statisticActionStyle"
-        android:layout_toRightOf="@+id/groundBalls"/>
+        android:layout_toRightOf="@+id/groundBallsHeader"
+        android:text="@string/assist" />
      
       <TextView
-        android:id="@+id/goals"
+        android:id="@+id/goalHeaders"
         style="@style/statisticActionStyle"
-        android:layout_toRightOf="@+id/assists"/>
+        android:layout_toRightOf="@+id/assistsHeader"
+        android:text="@string/goal" />
 
 </RelativeLayout>

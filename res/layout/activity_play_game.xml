@@ -3,22 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="#0099cc"
+    style="@style/fullScreenActivityTheme"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/playerName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/name_label"
-        android:textColor="#FFF" />
+    <include layout="@layout/layout_player_detail_header_row" />
 
     <ListView
         android:id="@+id/gameRosterList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#0099cc" >
+        style="@style/textViewLabelStyle"  >
     </ListView>
 
 </LinearLayout>

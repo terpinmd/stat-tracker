@@ -20,57 +20,61 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class color {
         public static final int black_overlay=0x7f040000;
+        public static final int translucent_gray=0x7f040001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int player_background=0x7f020001;
     }
     public static final class id {
-        public static final int InnerRelativeLayout=0x7f07000c;
-        public static final int TextViewTitle=0x7f070013;
-        public static final int TextViewTitle2=0x7f070014;
-        public static final int addPlayer=0x7f07001d;
-        public static final int addTeam=0x7f070016;
-        public static final int assist=0x7f070020;
-        public static final int assists=0x7f07002b;
-        public static final int buttonBarRelativeLayout=0x7f07002d;
-        public static final int cancel=0x7f070022;
-        public static final int deleteButton=0x7f07000e;
-        public static final int editPlayer=0x7f07001e;
-        public static final int editTeamName=0x7f070019;
-        public static final int editTeamNameLabel=0x7f070018;
-        public static final int firstNameLabel=0x7f070004;
-        public static final int firstNameText=0x7f070005;
-        public static final int fullscreen_content=0x7f07000f;
-        public static final int fullscreen_content_controls=0x7f070010;
-        public static final int gameRosterList=0x7f070001;
-        public static final int game_notes=0x7f070028;
-        public static final int game_notes_label=0x7f070027;
-        public static final int goal=0x7f070021;
-        public static final int goals=0x7f07002c;
-        public static final int groundBall=0x7f07001f;
-        public static final int groundBalls=0x7f07002a;
-        public static final int jerseyLabel=0x7f07000a;
-        public static final int jerseyText=0x7f07000b;
-        public static final int lastNameLabel=0x7f070007;
-        public static final int lastNameText=0x7f070008;
-        public static final int playerName=0x7f070000;
-        public static final int save=0x7f07000d;
-        public static final int select_my_team_spinner=0x7f070024;
-        public static final int select_player_spinner=0x7f07001c;
-        public static final int select_team_spinner=0x7f070015;
-        public static final int select_vs_team_spinner=0x7f070026;
-        public static final int start=0x7f070029;
-        public static final int start_game=0x7f070012;
-        public static final int tableLayout1=0x7f070002;
-        public static final int tableRow1=0x7f070003;
-        public static final int tableRow2=0x7f070006;
-        public static final int tableRow3=0x7f070009;
-        public static final int tableRow4=0x7f070017;
-        public static final int tableRow5=0x7f07001a;
-        public static final int teamRosterLabel=0x7f07001b;
-        public static final int team_management=0x7f070011;
-        public static final int vsTeamLabel=0x7f070025;
-        public static final int yourTeamLabel=0x7f070023;
+        public static final int InnerRelativeLayout=0x7f07000b;
+        public static final int TextViewTitle=0x7f070010;
+        public static final int TextViewTitle2=0x7f070011;
+        public static final int addPlayer=0x7f07001a;
+        public static final int addTeam=0x7f070013;
+        public static final int assist=0x7f07001d;
+        public static final int assists=0x7f07002d;
+        public static final int assistsHeader=0x7f070029;
+        public static final int buttonBarRelativeLayout=0x7f07002f;
+        public static final int cancel=0x7f07001f;
+        public static final int deleteButton=0x7f07000d;
+        public static final int editPlayer=0x7f07001b;
+        public static final int editTeamName=0x7f070016;
+        public static final int editTeamNameLabel=0x7f070015;
+        public static final int firstNameLabel=0x7f070003;
+        public static final int firstNameText=0x7f070004;
+        public static final int gameRosterList=0x7f070000;
+        public static final int game_notes=0x7f070025;
+        public static final int game_notes_label=0x7f070024;
+        public static final int goal=0x7f07001e;
+        public static final int goalHeaders=0x7f07002a;
+        public static final int goals=0x7f07002e;
+        public static final int groundBall=0x7f07001c;
+        public static final int groundBalls=0x7f07002c;
+        public static final int groundBallsHeader=0x7f070028;
+        public static final int jerseyLabel=0x7f070009;
+        public static final int jerseyText=0x7f07000a;
+        public static final int lastNameLabel=0x7f070006;
+        public static final int lastNameText=0x7f070007;
+        public static final int playerName=0x7f07002b;
+        public static final int playerNameHeader=0x7f070027;
+        public static final int save=0x7f07000c;
+        public static final int select_my_team_spinner=0x7f070021;
+        public static final int select_player_spinner=0x7f070019;
+        public static final int select_team_spinner=0x7f070012;
+        public static final int select_vs_team_spinner=0x7f070023;
+        public static final int start=0x7f070026;
+        public static final int start_game=0x7f07000f;
+        public static final int tableLayout1=0x7f070001;
+        public static final int tableRow1=0x7f070002;
+        public static final int tableRow2=0x7f070005;
+        public static final int tableRow3=0x7f070008;
+        public static final int tableRow4=0x7f070014;
+        public static final int tableRow5=0x7f070017;
+        public static final int teamRosterLabel=0x7f070018;
+        public static final int team_management=0x7f07000e;
+        public static final int vsTeamLabel=0x7f070022;
+        public static final int yourTeamLabel=0x7f070020;
     }
     public static final class layout {
         public static final int activity_play_game=0x7f030000;
@@ -79,13 +83,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_team_mgmt=0x7f030003;
         public static final int dialog_player_statistic=0x7f030004;
         public static final int dialog_start_game=0x7f030005;
-        public static final int layout_player_detail_row=0x7f030006;
-        public static final int layout_save_button_bar=0x7f030007;
+        public static final int layout_player_detail_header_row=0x7f030006;
+        public static final int layout_player_detail_row=0x7f030007;
+        public static final int layout_save_button_bar=0x7f030008;
     }
     public static final class string {
         public static final int add=0x7f05000e;
         public static final int app_name=0x7f050000;
-        public static final int assist=0x7f050018;
+        public static final int assist=0x7f050019;
         public static final int back=0x7f050009;
         public static final int delete=0x7f05000d;
         public static final int edit=0x7f05000b;
@@ -93,10 +98,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int first_name_label=0x7f050012;
         public static final int game_in_progress=0x7f050008;
         public static final int game_notes=0x7f050007;
-        public static final int goal=0x7f050019;
-        public static final int ground_ball=0x7f050017;
+        public static final int goal=0x7f05001a;
+        public static final int ground_ball=0x7f050018;
         public static final int jersey_label=0x7f050014;
         public static final int last_name_label=0x7f050013;
+        public static final int name=0x7f050017;
         public static final int name_label=0x7f050011;
         public static final int other_team=0x7f050006;
         public static final int roster_label=0x7f050015;
@@ -133,14 +139,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f060000;
+        public static final int ButtonBar=0x7f060002;
+        public static final int ButtonBarButton=0x7f060007;
+        public static final int FullscreenActionBarStyle=0x7f060009;
+        public static final int FullscreenTheme=0x7f060008;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
-        public static final int ButtonBar=0x7f060003;
-        public static final int ButtonBarButton=0x7f060004;
-        public static final int FullscreenActionBarStyle=0x7f060005;
-        public static final int FullscreenTheme=0x7f060002;
+        public static final int fullScreenActivityTheme=0x7f060001;
+        public static final int modalWindowStyle=0x7f060003;
+        public static final int statisticActionStyle=0x7f060006;
+        public static final int textViewLabelStyle=0x7f060004;
+        public static final int textViewStyle=0x7f060005;
     }
     public static final class styleable {
         /** 
