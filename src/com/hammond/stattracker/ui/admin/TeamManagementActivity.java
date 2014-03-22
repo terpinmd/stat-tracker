@@ -60,12 +60,20 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     
     public void editRoster(View view){
        	final Intent intent = new Intent(this, PlayerManagementActivity.class);
-       	intent.putExtra("team", this.getSelectedTeam());
-       	intent.putExtra("player", this.getSelectedPlayer());
+    	Player player = this.getSelectedPlayer();
+    	player.setTeam(this.getSelectedTeam());
+       	intent.putExtra("player", player);
        	startActivity(intent);	    	
     }
     
-    
+    public void addPlayer(View view){
+       	final Intent intent = new Intent(this, PlayerManagementActivity.class);
+       	Player player = new Player();
+       	player.setTeam(this.getSelectedTeam());
+       	intent.putExtra("player", player);
+       	startActivity(intent);	     	
+    }
+        
     private Team getSelectedTeam(){
     	Spinner spinner =  (Spinner) findViewById(R.id.select_team_spinner);
     	return (Team) spinner.getSelectedItem();
@@ -88,6 +96,12 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {}
 
+	
+	@Override
+	public void onResume() { 
+		super.onResume();
+		buildPlayersSpinner();
+	}
 
 }
  

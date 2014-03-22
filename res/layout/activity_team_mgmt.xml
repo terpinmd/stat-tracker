@@ -1,30 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/fullScreenActivityTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="48dp" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip" >
-
-            <TextView
-                android:id="@+id/TextViewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/team_management"
-                android:textSize="10pt" >
-            </TextView>
-        </TableRow>
+        android:layout_height="match_parent" >
 
         <TableRow
             android:id="@+id/tableRow2"
@@ -34,20 +18,19 @@
 
             <TextView
                 android:id="@+id/TextViewTitle2"
+                style="@style/textViewLabelStyle"
                 android:layout_width="0px"
-                android:layout_height="fill_parent"
-                android:layout_gravity="left"
+                android:layout_height="wrap_content"
                 android:layout_weight=".3"
-                android:text="@string/team_label"
-                android:textSize="9pt" >
+                android:text="@string/team_label" >
             </TextView>
 
             <Spinner
                 android:id="@+id/select_team_spinner"
                 android:layout_width="0px"
-                android:layout_height="fill_parent"
-                android:layout_gravity="left"
-                android:layout_weight=".7" />
+                android:layout_height="wrap_content"
+                android:layout_weight=".7" >
+            </Spinner>
         </TableRow>
 
         <RelativeLayout
@@ -67,15 +50,15 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:padding="5dip"
-            android:paddingTop="25dip" >
+            android:layout_marginTop="50dip" >
 
             <TextView
                 android:id="@+id/editTeamNameLabel"
+                style="@style/textViewLabelStyle"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight=".3"
-                android:text="@string/name_label"
-                android:textSize="9pt" >
+                android:text="@string/name_label" >
             </TextView>
 
             <EditText
@@ -95,11 +78,11 @@
 
             <TextView
                 android:id="@+id/teamRosterLabel"
+                style="@style/textViewLabelStyle"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight=".3"
-                android:text="@string/roster_label"
-                android:textSize="9pt" >
+                android:text="@string/roster_label" >
             </TextView>
 
             <Spinner
@@ -129,9 +112,8 @@
                 android:onClick="editRoster"
                 android:text="@string/edit" >
             </Button>
-        </RelativeLayout>
+        </RelativeLayout>        
     </TableLayout>
-
+    
     <include layout="@layout/layout_save_button_bar" />
-
 </RelativeLayout>

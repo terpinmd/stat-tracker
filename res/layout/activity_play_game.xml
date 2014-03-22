@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     style="@style/fullScreenActivityTheme"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
     <include layout="@layout/layout_player_detail_header_row" />
 

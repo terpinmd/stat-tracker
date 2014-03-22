@@ -41,7 +41,11 @@ public class PlayerService {
 	}
 	
 	public void save(Player player){
-		this.playerDao.save(player);
+		if(player.getId() == null){
+			this.playerDao.create(player);			
+		} else{
+			this.playerDao.save(player);	
+		}
 	}
 	
 	public void delete(Player player){

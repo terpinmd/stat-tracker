@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import com.hammond.stattracker.R;
 import com.hammond.stattracker.domain.Player;
-import com.hammond.stattracker.domain.Team;
 import com.hammond.stattracker.service.PlayerService;
 
 
@@ -27,8 +26,7 @@ public class PlayerManagementActivity extends Activity {
         playerService = new PlayerService(this);
         setContentView(R.layout.activity_player_mgmt);        
         this.player = (Player) this.getIntent().getSerializableExtra("player");   
-        this.player.setTeam((Team) this.getIntent().getSerializableExtra("team"));
-        
+
         setFormFields();
    }  
     
