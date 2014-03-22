@@ -14,6 +14,7 @@
         android:id="@+id/gameRosterList"
         android:gravity="center"
         android:dividerHeight="10sp"
+        android:layout_height="fill_parent"
         style="@style/textViewLabelStyle">
     </ListView>
 

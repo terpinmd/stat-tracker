@@ -6,20 +6,15 @@ import static com.hammond.stattracker.dao.db.StatisticsDefinition.COLUMN_NAME_GA
 import static com.hammond.stattracker.dao.db.StatisticsDefinition.COLUMN_NAME_STATISTIC_NAME;
 import static com.hammond.stattracker.dao.db.StatisticsDefinition.ID;
 import static com.hammond.stattracker.dao.db.StatisticsDefinition.TABLE_NAME_GAME_STATISTICS;
-
-import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.hammond.stattracker.domain.AbstractStatistic;
 import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.LacrosseStatistic;
 import com.hammond.stattracker.domain.Player;
-import com.hammond.stattracker.domain.Team;
 
 public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 
@@ -28,11 +23,7 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 	}
 
 	
-	public void dbCreate(){
-		this.onCreate(this.getWritableDatabase());
-	}
-	
-	
+
 	public void save(AbstractStatistic statistic, Game game, Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		
@@ -60,29 +51,16 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 								 null, 
 								 ID);
 		
-		//Cursor cursor = db.rawQuery("SELECT count(*), statistic_id FROM  game_statistics WHERE player_id = ? and game_id = ? group by statistic_id", 
-		//							new String[]{player.getId().toString(), "1"});
 		int count = 0;
 		if (cursor.moveToFirst()) {		
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			DatabaseUtils.dumpCurrentRow(cursor);
+			//DatabaseUtils.dumpCurrentRow(cursor);
 			count = cursor.getInt(1);
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " + count);			
-			
 		}
 		
 		return count;
 	}
 	
-	
-	
-	public List<Object> getPlayerStatisticsForGame(Team team, Game game){
-		
-		
-		return null;
-	}
-	
-	
+
 	@Override
 	protected AbstractStatistic build(Cursor cursor){
 		AbstractStatistic item = new LacrosseStatistic(cursor.getString(cursor.getColumnIndex(COLUMN_NAME_STATISTIC_NAME)));

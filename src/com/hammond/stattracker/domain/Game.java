@@ -2,52 +2,36 @@ package com.hammond.stattracker.domain;
 
 import java.util.Date;
 
+public class Game extends AbstractDomainClass {
 
-
-
-public class Game extends AbstractDomainClass{
-	
 	private static final long serialVersionUID = -6757806125352263685L;
 
-	private Long gameId, myTeamId, vsTeamId;
-    
-    private String title;
-    
-    private Long dateTime;
-    
-    private String notes;
+	private Team myTeam, vsTeam;
 
-    public Game(){
-    	this.dateTime = new Date().getTime();
-    }
-    
-	public Long getGameId() {
-		return gameId;
+	private String title;
+
+	private Long dateTime;
+
+	private String notes;
+
+	public Game() {
+		this.dateTime = new Date().getTime();
 	}
 
-	public void setGame(Long gameId) {
-		this.gameId = gameId;
+	public Team getVsTeam() {
+		return vsTeam;
 	}
 
-	
-	public Long getMyTeamId() {
-		return myTeamId;
+	public void setVsTeam(Team vsTeam) {
+		this.vsTeam = vsTeam;
 	}
 
-	public void setMyTeamId(Long myTeamId) {
-		this.myTeamId = myTeamId;
+	public Team getMyTeam() {
+		return myTeam;
 	}
 
-	public Long getVsTeamId() {
-		return vsTeamId;
-	}
-
-	public void setVsTeamId(Long vsTeamId) {
-		this.vsTeamId = vsTeamId;
-	}
-
-	public void setGameId(Long gameId) {
-		this.gameId = gameId;
+	public void setMyTeam(Team myTeam) {
+		this.myTeam = myTeam;
 	}
 
 	public String getTitle() {
@@ -72,7 +56,6 @@ public class Game extends AbstractDomainClass{
 
 	public void setNotes(String notes) {
 		this.notes = notes;
-	}   
+	}
 
-	
 }

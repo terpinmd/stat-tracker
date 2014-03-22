@@ -48,12 +48,12 @@ public class SplashScreenActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(context, PlayGameActivity.class); 				
-				intent.putExtra("team", (Team) teamSpinner.getSelectedItem());
+
 				Team myTeam = (Team) (((Spinner) dialog.findViewById(R.id.select_my_team_spinner)).getSelectedItem());
-				game.setMyTeamId(myTeam.getId());
-								
+				game.setMyTeam(myTeam);
+				
 				Team vsTeam = (Team) (((Spinner) dialog.findViewById(R.id.select_vs_team_spinner)).getSelectedItem());
-				game.setVsTeamId(vsTeam.getId());
+				game.setVsTeam(vsTeam);
 				
 				gameService.save(game);
 				intent.putExtra("game", game);
