@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import com.hammond.stattracker.service.StatisticService;
 
 public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 
-	protected StatisticService statisticService;
+	private StatisticService statisticService;
 	private PlayerService playerService;
 	private Activity context;
 	private Game game;
@@ -50,31 +51,61 @@ public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 		final Player player = (Player)this.getItem(position);
 		textView.setText(player.toStringShort());
 		
+		handleGroundBalls(rowView, player);		
+		handleAssists(rowView, player);		
+		handleGoals(rowView, player);
+		return rowView;
+	}
+
+
+	private void handleGroundBalls(View rowView, final Player player) {
 		final TextView groundBalls = (TextView) rowView.findViewById(R.id.groundBalls);
-		groundBalls.setText(this.statisticService.count(this.getLacrosseStatisticGb(), game, player).toString());
+		final LacrosseStatistic statistic = getLacrosseStatisticGb();
+		groundBalls.setText(this.statisticService.count(statistic, game, player).toString());
 		groundBalls.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View view) {
-				AbstractStatistic statistic = getLacrosseStatisticGb();
 				statisticService.increment(statistic, game, player);
 				groundBalls.setText(statistic.getCount().toString());
 			}			
+		});		
+		groundBalls.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View arg0) {
+				statisticService.decrement(statistic, game, player);
+				groundBalls.setText(statistic.getCount().toString());
+				return true;
+			} 			
 		});
-		
-		
+	}
+	
+	
+	private void handleAssists(View rowView, final Player player) {
 		final TextView assists = (TextView) rowView.findViewById(R.id.assists);
-		assists.setText(this.statisticService.count(this.getLacrosseStatisticAssist(), game, player).toString());
+		final LacrosseStatistic statistic = getLacrosseStatisticAssist();
+		assists.setText(this.statisticService.count(statistic, game, player).toString());
 		assists.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View view) {
-				AbstractStatistic statistic = getLacrosseStatisticAssist();
 				statisticService.increment(statistic, game, player);
 				assists.setText(statistic.getCount().toString());
 			}			
 		});
-		
+		assists.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View arg0) {
+				statisticService.decrement(statistic, game, player);
+				assists.setText(statistic.getCount().toString());
+				return true;
+			} 			
+		});
+	}
+
+
+	private void handleGoals(View rowView, final Player player) {
 		final TextView goals = (TextView) rowView.findViewById(R.id.goals);
-		goals.setText(this.statisticService.count(this.getLacrosseStatisticGoal(), game, player).toString());
+		final LacrosseStatistic statistic = getLacrosseStatisticGoal();
+		goals.setText(this.statisticService.count(statistic, game, player).toString());
 		goals.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View view) {
@@ -82,24 +113,33 @@ public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 				statisticService.increment(statistic, game, player);
 				goals.setText(statistic.getCount().toString());
 			}			
+		});		
+		goals.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View arg0) {
+				statisticService.decrement(statistic, game, player);
+				goals.setText(statistic.getCount().toString());
+				return true;
+			} 			
 		});
-		return rowView;
 	}
+
 	
-	private AbstractStatistic getLacrosseStatisticGb(){
-		AbstractStatistic statistic = new LacrosseStatistic("GROUND_BALL");
+	
+	private LacrosseStatistic getLacrosseStatisticGb(){
+		LacrosseStatistic statistic = new LacrosseStatistic("GROUND_BALL");
 		statistic.setId(Long.valueOf(1));
 		return statistic;
 	}
 
-	private AbstractStatistic getLacrosseStatisticAssist(){
-		AbstractStatistic statistic = new LacrosseStatistic("ASSIST");
+	private LacrosseStatistic getLacrosseStatisticAssist(){
+		LacrosseStatistic statistic = new LacrosseStatistic("ASSIST");
 		statistic.setId(Long.valueOf(2));
 		return statistic;
 	}
 	
-	private AbstractStatistic getLacrosseStatisticGoal(){
-		AbstractStatistic statistic = new LacrosseStatistic("GOAL");
+	private LacrosseStatistic getLacrosseStatisticGoal(){
+		LacrosseStatistic statistic = new LacrosseStatistic("GOAL");
 		statistic.setId(Long.valueOf(3));
 		return statistic;
 	}

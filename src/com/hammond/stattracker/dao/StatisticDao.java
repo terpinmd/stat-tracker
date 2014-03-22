@@ -60,6 +60,28 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 		return count;
 	}
 	
+	
+	public void deleteLast(AbstractStatistic statistic, Player player, Game game){
+
+		SQLiteDatabase db = this.getReadableDatabase();
+				
+		Cursor cursor = db.query(TABLE_NAME_GAME_STATISTICS, 
+								 new String[] {COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, " max(id) "}, 
+								 COLUMN_NAME_GAME_STATISTICS_PLAYER_ID 		+ " = ? and " + 
+								 COLUMN_NAME_GAME_STATISTICS_GAME_ID   		+ " = ? and " + 
+								 COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID 	+ " = ?",
+								 new String[]{player.getId().toString(), game.getId().toString(), statistic.getId().toString()}, 
+								 COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID , 
+								 null, 
+								 ID);
+		
+		if (cursor.moveToFirst()) {		
+			Integer max = cursor.getInt(1);
+			this.getWritableDatabase().delete(TABLE_NAME_GAME_STATISTICS, "id = ?", new String[]{max.toString()});
+			this.getWritableDatabase().close();
+		}
+	}
+	
 
 	@Override
 	protected AbstractStatistic build(Cursor cursor){

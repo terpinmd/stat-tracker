@@ -24,6 +24,12 @@ public class StatisticService {
 		statistic.setCount(count);
 	}
 	
+	public void decrement(AbstractStatistic statistic, Game game, Player player){
+		this.statisticDao.deleteLast(statistic, player, game);
+		Integer count = count(statistic, game , player);
+		statistic.setCount(count);
+	}
+	
 	public Integer count(AbstractStatistic statistic, Game game, Player player){
 		return this.statisticDao.getStatisticCount(statistic, player, game);
 	}

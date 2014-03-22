@@ -13,6 +13,7 @@
     <TextView
         android:id="@+id/groundBalls"
         style="@style/statisticActionStyle"
+        android:layout_marginRight="5dp"
         android:layout_toRightOf="@+id/playerName"/>
     
      <TextView
