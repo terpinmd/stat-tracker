@@ -19,11 +19,9 @@ import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.Team;
 public class GameDao extends AbstractBaseDao<Game> {
 
-	private TeamDao teamDao;
-	
+
 	public GameDao(Context context) {
 		super(context);
-		teamDao = new TeamDao(context);
 	}
 
 	
@@ -76,7 +74,10 @@ public class GameDao extends AbstractBaseDao<Game> {
 		game.setTitle(c.getString(c.getColumnIndex(COLUMN_GAME_TITLE)));
 		game.setDateTime(c.getLong(c.getColumnIndex(COLUMN_GAME_DATE)));
 		game.setNotes(c.getString(c.getColumnIndex(COLUMN_GAME_NOTES)));
-		game.setMyTeam(this.teamDao.getTeam(c.getLong(c.getColumnIndex(COLUMN_MY_TEAM))));
+		
+		Team myTeam = new Team();
+		myTeam.setId(c.getLong(c.getColumnIndex(COLUMN_MY_TEAM)));
+		game.setMyTeam(myTeam);
 		return game;
 	}
 }

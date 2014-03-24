@@ -35,11 +35,11 @@ public class GameHistoryActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,	long arg3) {
 				Intent intent = new Intent(context, PlayGameActivity.class);
-				intent.putExtra("game", (Game) listView.getSelectedItem());
-				startActivity(new Intent(context, PlayGameActivity.class));
+				Game game = (Game) listView.getItemAtPosition(position);
+				intent.putExtra("game", game);
+				startActivity(intent);
 			}
 			
 		});
