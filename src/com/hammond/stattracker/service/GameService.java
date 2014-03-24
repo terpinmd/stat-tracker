@@ -1,11 +1,12 @@
 package com.hammond.stattracker.service;
 
+import java.util.List;
+
 import android.app.Activity;
 
 import com.hammond.stattracker.dao.GameDao;
 import com.hammond.stattracker.domain.Game;
-
-
+import com.hammond.stattracker.domain.Team;
 
 public class GameService {
 
@@ -24,4 +25,7 @@ public class GameService {
 		}		
 	}
 
+	public List<Game> getAll(Team team){
+		return this.gameDao.getAll(team);
+	}
 }

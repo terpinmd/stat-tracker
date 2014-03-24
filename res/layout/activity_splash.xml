@@ -6,30 +6,36 @@
     android:background="@drawable/player_background"
     android:orientation="vertical" >
 
-
-
     <RelativeLayout
         android:id="@+id/InnerRelativeLayout"
+        style="@style/ButtonBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
         android:layout_alignParentBottom="true"
-        style="@style/ButtonBar">
+        android:background="@color/black" >
 
-        <!--  http://stackoverflow.com/questions/15805926/button-highlight-in-android -->
+        <!-- http://stackoverflow.com/questions/15805926/button-highlight-in-android -->
+
         <Button
             android:id="@+id/team_management"
             style="@style/ButtonBarButton"
-            android:onClick="openTeamManagement"
             android:layout_alignParentLeft="true"
+            android:onClick="teamManagement"
             android:text="@string/team_management" />
 
         <Button
             android:id="@+id/start_game"
             style="@style/ButtonBarButton"
-            android:onClick="startGame"
             android:layout_alignParentRight="true"
+            android:onClick="startGame"
             android:text="@string/start_game" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/history"
+        style="@style/ButtonBarButton"
+        android:layout_alignParentRight="true"
+        android:onClick="history"
+        android:text="@string/history" />
 
 </RelativeLayout>

@@ -64,13 +64,7 @@ public class HomeActivity extends Activity {
 		});
 		dialog.show();
     }
-    
-    
-    
-    
-    public void openTeamManagement(View view){
-    	startActivity(new Intent(HomeActivity.this, TeamManagementActivity.class));
-    }
+       
 
 	public void buildTeamSpinner(Dialog dialog){
     	teamSpinner = (Spinner) dialog.findViewById(R.id.select_my_team_spinner);
@@ -81,4 +75,15 @@ public class HomeActivity extends Activity {
     	Spinner spinner = (Spinner) dialog.findViewById(R.id.select_vs_team_spinner);
        	spinner.setAdapter(new TeamSpinnerAdapter(context));
     }
+	
+	
+    public void teamManagement(View view){
+    	startActivity(new Intent(this, TeamManagementActivity.class));
+    }
+    
+    public void history(View view){
+    	startActivity(new Intent(this, GameHistoryActivity.class));
+    }
+
+	
 }

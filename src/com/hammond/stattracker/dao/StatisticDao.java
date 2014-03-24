@@ -30,7 +30,8 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 		values.put(COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID, statistic.getId());
 		values.put(COLUMN_NAME_GAME_STATISTICS_GAME_ID, game.getId());
 		values.put(COLUMN_NAME_GAME_STATISTICS_PLAYER_ID, player.getId());
-		db.insert(TABLE_NAME_GAME_STATISTICS, null, values);		
+		db.insert(TABLE_NAME_GAME_STATISTICS, null, values);
+		db.close();
 	}
 	
 	
@@ -57,6 +58,8 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 			count = cursor.getInt(1);
 		}
 		
+		db.close();
+		
 		return count;
 	}
 	
@@ -80,6 +83,7 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 			this.getWritableDatabase().delete(TABLE_NAME_GAME_STATISTICS, "id = ?", new String[]{max.toString()});
 			this.getWritableDatabase().close();
 		}
+		db.close();
 	}
 	
 

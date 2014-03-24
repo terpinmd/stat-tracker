@@ -1,11 +1,16 @@
 package com.hammond.stattracker.domain;
 
+import android.annotation.SuppressLint;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Game extends AbstractDomainClass {
 
 	private static final long serialVersionUID = -6757806125352263685L;
 
+	@SuppressLint("SimpleDateFormat")
+	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
+	
 	private Team myTeam, vsTeam;
 
 	private String title;
@@ -58,4 +63,14 @@ public class Game extends AbstractDomainClass {
 		this.notes = notes;
 	}
 
+	@Override
+	public String toString() {
+		return "Game from " + DATE_FORMAT.format(getDate());
+	}
+
+	public Date getDate(){
+		return new Date(this.dateTime);
+	}
+	
+	
 }
