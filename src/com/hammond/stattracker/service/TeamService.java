@@ -21,6 +21,10 @@ public class TeamService {
 	}
 	
 	public void save(Team team){
-		this.teamDao.save(team);
+		if(team.getId() == null){
+			this.teamDao.create(team);
+		} else{
+			this.teamDao.save(team);
+		}		
 	}
 }

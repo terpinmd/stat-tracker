@@ -1,5 +1,12 @@
 package com.hammond.stattracker.dao;
 
+import static com.hammond.stattracker.dao.db.PlayerDefinition.COLUMN_FIRST_NAME;
+import static com.hammond.stattracker.dao.db.PlayerDefinition.COLUMN_JERSEY_NUMBER;
+import static com.hammond.stattracker.dao.db.PlayerDefinition.COLUMN_LAST_NAME;
+import static com.hammond.stattracker.dao.db.PlayerDefinition.COLUMN_TEAM;
+import static com.hammond.stattracker.dao.db.PlayerDefinition.ID;
+import static com.hammond.stattracker.dao.db.PlayerDefinition.TABLE_NAME_PLAYER;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +15,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import static com.hammond.stattracker.dao.db.PlayerDefinition.*;
 import com.hammond.stattracker.domain.Player;
 import com.hammond.stattracker.domain.Team;
 

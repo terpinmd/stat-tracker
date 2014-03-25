@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -47,14 +48,31 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     }
     
     
+    
+    public void addTeam(View view){
+    	this.toggleControlsActions(false);
+    }
+    
+    public void toggleControlsActions(boolean value){
+    	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner);
+    	teamSpinner.setEnabled(value);
+    	Spinner playerSpinner = (Spinner) findViewById(R.id.select_player_spinner);
+    	playerSpinner.setEnabled(value);
+    	Button addPlayer = (Button) findViewById(R.id.addPlayer);
+    	addPlayer.setEnabled(value);   
+    	Button editPlayer = (Button) findViewById(R.id.editPlayer);
+    	editPlayer.setEnabled(value);    
+    }
       
+    
     public void save(View view){
-		Team team = getSelectedTeam();
+    	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner); //TODO clean this up    	
+		Team team = teamSpinner.isEnabled() ? getSelectedTeam() : new Team();
 		EditText editText = (EditText) findViewById(R.id.editTeamName);
 		team.setName(editText.getText().toString());
 		teamService.save(team);    	
-		
-		//update list of teams with new name here
+		toggleControlsActions(true);
+		buildTeamsSpinner();
     }
     
     
@@ -90,6 +108,8 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 		EditText editText = (EditText) findViewById(R.id.editTeamName);
 		Team team = getSelectedTeam();
 		editText.setText(team.getName());
+		
+		buildPlayersSpinner();
 	}
 
 

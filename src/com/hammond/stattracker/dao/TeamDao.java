@@ -1,5 +1,9 @@
 package com.hammond.stattracker.dao;
 
+import static com.hammond.stattracker.dao.db.TeamDefinition.COLUMN_TEAM_NAME;
+import static com.hammond.stattracker.dao.db.TeamDefinition.ID;
+import static com.hammond.stattracker.dao.db.TeamDefinition.TABLE_NAME_TEAM;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +12,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import static com.hammond.stattracker.dao.db.TeamDefinition.*;
 import com.hammond.stattracker.domain.Team;
 
 public class TeamDao extends AbstractBaseDao<Team> {

@@ -1,8 +1,9 @@
 package com.hammond.stattracker.domain;
 
-import android.annotation.SuppressLint;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import android.annotation.SuppressLint;
 
 public class Game extends AbstractDomainClass {
 
