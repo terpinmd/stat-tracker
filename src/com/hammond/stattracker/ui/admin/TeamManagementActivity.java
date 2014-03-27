@@ -62,8 +62,10 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     public void toggleControlsActions(boolean value){
     	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner);
     	teamSpinner.setEnabled(value);
+    	teamSpinner.setVisibility(value == false ? View.INVISIBLE : View.VISIBLE);
     	Spinner playerSpinner = (Spinner) findViewById(R.id.select_player_spinner);
     	playerSpinner.setEnabled(value);
+    	playerSpinner.setVisibility(value == false ? View.INVISIBLE : View.VISIBLE);
     	Button addPlayer = (Button) findViewById(R.id.addPlayer);
     	addPlayer.setEnabled(value);   
     	Button editPlayer = (Button) findViewById(R.id.editPlayer);
