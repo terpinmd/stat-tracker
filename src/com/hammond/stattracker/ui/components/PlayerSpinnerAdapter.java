@@ -19,9 +19,11 @@ public class PlayerSpinnerAdapter extends ArrayAdapter<Player>{
 	public PlayerSpinnerAdapter(Activity activity, Team team) {
 		super(activity,  android.R.layout.simple_spinner_dropdown_item);
 		playerService = new PlayerService(activity);
-		players = this.playerService.getPlayersForTeam(team);
-		for(Player player : players){
-			this.add(player);
+		if(team != null){
+			players = this.playerService.getPlayersForTeam(team);
+			for(Player player : players){
+				this.add(player);
+			}
 		}
 		this.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	}

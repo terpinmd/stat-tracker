@@ -82,7 +82,7 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     
     public void save(View view){
     	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner); //TODO clean this up    	
-		Team team = teamSpinner.isEnabled() ? getSelectedTeam() : new Team();
+		Team team = teamSpinner.isEnabled() && teamSpinner.getCount() > 0 ? getSelectedTeam() : new Team();
 		EditText editText = (EditText) findViewById(R.id.editTeamName);
 		team.setName(editText.getText().toString());
 		teamService.save(team);    	
