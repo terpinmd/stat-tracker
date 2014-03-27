@@ -26,8 +26,9 @@ public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 	private PlayerService playerService;
 	private Activity context;
 	private Game game;
+	private boolean isReadyOnly;
 	
-	public PlayerStatisticsAdapter(Activity activity, Game game){ //Isnt team in game?
+	public PlayerStatisticsAdapter(Activity activity, Game game, boolean readOnly){
 		super(activity, R.layout.layout_player_detail_row);
 		this.playerService = new PlayerService(activity);
 		this.statisticService = new StatisticService(activity);
@@ -39,6 +40,11 @@ public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 		for(Player player : players){
 			this.add(player);
 		}
+		this.isReadyOnly = readOnly;
+	}
+	
+	public PlayerStatisticsAdapter(Activity activity, Game game){
+		this(activity, game, false);
 	}
 	
 
@@ -62,21 +68,24 @@ public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 		final TextView groundBalls = (TextView) rowView.findViewById(R.id.groundBalls);
 		final LacrosseStatistic statistic = getLacrosseStatisticGb();
 		groundBalls.setText(this.statisticService.count(statistic, game, player).toString());
-		groundBalls.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View view) {
-				statisticService.increment(statistic, game, player);
-				groundBalls.setText(statistic.getCount().toString());
-			}			
-		});		
-		groundBalls.setOnLongClickListener(new OnLongClickListener() {
-			@Override
-			public boolean onLongClick(View arg0) {
-				statisticService.decrement(statistic, game, player);
-				groundBalls.setText(statistic.getCount().toString());
-				return true;
-			} 			
-		});
+		
+		if(!isReadyOnly){
+			groundBalls.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View view) {
+					statisticService.increment(statistic, game, player);
+					groundBalls.setText(statistic.getCount().toString());
+				}			
+			});		
+			groundBalls.setOnLongClickListener(new OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View arg0) {
+					statisticService.decrement(statistic, game, player);
+					groundBalls.setText(statistic.getCount().toString());
+					return true;
+				} 			
+			});			
+		}
 	}
 	
 	
@@ -84,21 +93,24 @@ public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 		final TextView assists = (TextView) rowView.findViewById(R.id.assists);
 		final LacrosseStatistic statistic = getLacrosseStatisticAssist();
 		assists.setText(this.statisticService.count(statistic, game, player).toString());
-		assists.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View view) {
-				statisticService.increment(statistic, game, player);
-				assists.setText(statistic.getCount().toString());
-			}			
-		});
-		assists.setOnLongClickListener(new OnLongClickListener() {
-			@Override
-			public boolean onLongClick(View arg0) {
-				statisticService.decrement(statistic, game, player);
-				assists.setText(statistic.getCount().toString());
-				return true;
-			} 			
-		});
+		
+		if(!isReadyOnly){
+			assists.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View view) {
+					statisticService.increment(statistic, game, player);
+					assists.setText(statistic.getCount().toString());
+				}			
+			});
+			assists.setOnLongClickListener(new OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View arg0) {
+					statisticService.decrement(statistic, game, player);
+					assists.setText(statistic.getCount().toString());
+					return true;
+				} 			
+			});			
+		}
 	}
 
 
@@ -106,22 +118,25 @@ public class PlayerStatisticsAdapter  extends ArrayAdapter<Player>{
 		final TextView goals = (TextView) rowView.findViewById(R.id.goals);
 		final LacrosseStatistic statistic = getLacrosseStatisticGoal();
 		goals.setText(this.statisticService.count(statistic, game, player).toString());
-		goals.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View view) {
-				AbstractStatistic statistic = getLacrosseStatisticGoal();
-				statisticService.increment(statistic, game, player);
-				goals.setText(statistic.getCount().toString());
-			}			
-		});		
-		goals.setOnLongClickListener(new OnLongClickListener() {
-			@Override
-			public boolean onLongClick(View arg0) {
-				statisticService.decrement(statistic, game, player);
-				goals.setText(statistic.getCount().toString());
-				return true;
-			} 			
-		});
+		
+		if(!isReadyOnly){
+			goals.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View view) {
+					AbstractStatistic statistic = getLacrosseStatisticGoal();
+					statisticService.increment(statistic, game, player);
+					goals.setText(statistic.getCount().toString());
+				}			
+			});		
+			goals.setOnLongClickListener(new OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View arg0) {
+					statisticService.decrement(statistic, game, player);
+					goals.setText(statistic.getCount().toString());
+					return true;
+				} 			
+			});			
+		}
 	}
 
 	

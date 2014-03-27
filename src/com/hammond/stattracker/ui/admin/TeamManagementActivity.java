@@ -46,7 +46,13 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     	Spinner spinner = (Spinner) findViewById(R.id.select_player_spinner);
        	spinner.setAdapter(new PlayerSpinnerAdapter(this, this.getSelectedTeam()));
     }
-    
+
+    public void deleteTeam(View view){
+    	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner); 
+    	this.teamService.delete((Team) teamSpinner.getSelectedItem());
+    	teamSpinner.setSelection(0);
+    	buildTeamsSpinner();
+    }
     
     
     public void addTeam(View view){
@@ -61,7 +67,16 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     	Button addPlayer = (Button) findViewById(R.id.addPlayer);
     	addPlayer.setEnabled(value);   
     	Button editPlayer = (Button) findViewById(R.id.editPlayer);
-    	editPlayer.setEnabled(value);    
+    	editPlayer.setEnabled(value && (playerSpinner.getAdapter().getCount() > 0));    
+
+    	Button deleteTeam = (Button) findViewById(R.id.deleteTeam);
+    	deleteTeam.setEnabled(value);  
+    	
+    	if(!value){
+    		EditText editText = (EditText) findViewById(R.id.editTeamName);
+    		editText.setText(null);
+    	}    	
+    	
     }
       
     
@@ -110,6 +125,7 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 		editText.setText(team.getName());
 		
 		buildPlayersSpinner();
+        toggleControlsActions(true);
 	}
 
 
@@ -121,6 +137,7 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 	public void onResume() { 
 		super.onResume();
 		buildPlayersSpinner();
+		toggleControlsActions(true);
 	}
 
 }

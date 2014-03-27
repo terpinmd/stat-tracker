@@ -1,5 +1,7 @@
 package com.hammond.stattracker.service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
@@ -17,7 +19,15 @@ public class TeamService {
 	}
 	
 	public List<Team> getAll(){
-		return this.teamDao.getAll();
+		List<Team> teams =  this.teamDao.getAll();
+		Collections.sort(teams, new Comparator<Team>(){
+			@Override
+			public int compare(Team first, Team second) {
+				return first.getName().compareTo(second.getName());
+			}
+			
+		});
+		return teams;
 	}
 	
 	public void save(Team team){
@@ -26,5 +36,9 @@ public class TeamService {
 		} else{
 			this.teamDao.save(team);
 		}		
+	}
+
+	public void delete(Team team) {
+		teamDao.delete(team);
 	}
 }

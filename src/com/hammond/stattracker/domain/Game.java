@@ -66,7 +66,7 @@ public class Game extends AbstractDomainClass {
 
 	@Override
 	public String toString() {
-		return "Game from " + DATE_FORMAT.format(getDate());
+		return DATE_FORMAT.format(getDate()) + " " +  this.getMyTeam().getAbbr() + " vs " + this.getVsTeam().getAbbr();
 	}
 
 	public Date getDate(){

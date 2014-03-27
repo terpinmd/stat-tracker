@@ -27,12 +27,19 @@ public class PlayGameActivity extends Activity {
 		this.game = (Game) this.getIntent().getSerializableExtra("game");
 
 		ListView listView = (ListView) findViewById(R.id.gameRosterList);
-		ArrayAdapter<Player> adapter = new PlayerStatisticsAdapter(this, game);
+		ArrayAdapter<Player> adapter = new PlayerStatisticsAdapter(this, game, this.isReadyOnly());
 		listView.setAdapter(adapter);
 	}
 
 	public void save(View view) {
 		gameService.save(this.game);
+	}
+	
+	public boolean isReadyOnly(){
+		Boolean value = (Boolean) this.getIntent().getSerializableExtra("isReadyOnly");
+		if(value == null)
+			return false;
+		return value.booleanValue();
 	}
 
 }

@@ -28,4 +28,7 @@ public class Team extends AbstractDomainClass{
 		return this.name.toUpperCase();
 	}	
 	
+	public String getAbbr(){
+		return this.name.substring(0, 3) + ".";
+	}
 }

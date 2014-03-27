@@ -43,6 +43,14 @@
                 android:layout_alignParentRight="true"
                 android:onClick="addTeam"
                 android:text="@string/add" />
+            
+            <Button
+                android:id="@+id/deleteTeam"
+                style="@style/ButtonBarButton"
+                android:layout_toLeftOf="@id/addTeam"
+                android:onClick="deleteTeam"
+                android:text="@string/delete" />
+            
         </RelativeLayout>
 
         <TableRow

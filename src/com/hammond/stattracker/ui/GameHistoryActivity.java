@@ -19,6 +19,7 @@ public class GameHistoryActivity extends Activity {
 	private GameService gameService;
 
 	private Activity context;
+
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class GameHistoryActivity extends Activity {
 		this.gameService = new GameService(this);
 		setContentView(R.layout.activity_game_history);
 		context = this;
-		
+
 		final ListView listView = (ListView) findViewById(R.id.gameHistoryList);
 		Team team = new Team();
 		team.setId(Long.valueOf(1));
@@ -39,14 +40,10 @@ public class GameHistoryActivity extends Activity {
 				Intent intent = new Intent(context, PlayGameActivity.class);
 				Game game = (Game) listView.getItemAtPosition(position);
 				intent.putExtra("game", game);
+				intent.putExtra("isReadyOnly", true);
 				startActivity(intent);
 			}
 			
 		});
 	}
-
-	public void save(View view) {
-		
-	}
-
 }
