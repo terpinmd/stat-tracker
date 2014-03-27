@@ -11,7 +11,6 @@ import android.widget.ListView;
 
 import com.hammond.stattracker.R;
 import com.hammond.stattracker.domain.Game;
-import com.hammond.stattracker.domain.Team;
 import com.hammond.stattracker.service.GameService;
 
 public class GameHistoryActivity extends Activity {
@@ -29,9 +28,7 @@ public class GameHistoryActivity extends Activity {
 		context = this;
 
 		final ListView listView = (ListView) findViewById(R.id.gameHistoryList);
-		Team team = new Team();
-		team.setId(Long.valueOf(1));
-		listView.setAdapter(new ArrayAdapter<Game>(this, android.R.layout.simple_list_item_1, this.gameService.getAll(team)));
+		listView.setAdapter(new ArrayAdapter<Game>(this, android.R.layout.simple_list_item_1, this.gameService.getAll()));
 		
 		listView.setOnItemClickListener(new OnItemClickListener(){
 

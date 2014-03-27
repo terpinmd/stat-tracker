@@ -25,7 +25,11 @@ public class GameService {
 		}		
 	}
 
-	public List<Game> getAll(Team team){
+	public List<Game> getAllForTeam(Team team){
 		return this.gameDao.getAll(team);
+	}
+	
+	public List<Game> getAll(){
+		return this.gameDao.getAll();
 	}
 }

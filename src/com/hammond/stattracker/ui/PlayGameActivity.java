@@ -31,8 +31,9 @@ public class PlayGameActivity extends Activity {
 		listView.setAdapter(adapter);
 	}
 
-	public void save(View view) {
+	public void close(View view) {
 		gameService.save(this.game);
+		this.finish();
 	}
 	
 	public boolean isReadyOnly(){

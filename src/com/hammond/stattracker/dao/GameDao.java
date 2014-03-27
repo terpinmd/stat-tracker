@@ -68,6 +68,22 @@ public class GameDao extends AbstractBaseDao<Game> {
 		return games;
 	}
 
+	
+	public List<Game> getAll(){
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		List<Game> games = new ArrayList<Game>();
+		
+		Cursor cursor = db.query(TABLE_NAME_GAME, null, null, null, null, null, COLUMN_GAME_DATE + " desc");
+		
+		if (cursor.moveToFirst()) {
+			do {
+				games.add(build(cursor));
+			} while (cursor.moveToNext());
+		}
+		
+		return games;
+	}
 
 	@Override
 	protected Game build(Cursor c) {

@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fullScreenActivityTheme"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    style="@style/fullScreenActivityTheme"
     android:orientation="horizontal" >
 
     <include layout="@layout/layout_player_detail_header_row" />
 
-            <!--  android:divider="@android:color/transparent" -->
+    <!-- android:divider="@android:color/transparent" -->
+
     <ListView
-        android:layout_marginTop="48dp"
         android:id="@+id/gameRosterList"
-        android:gravity="center"
-        android:dividerHeight="10sp"
+        style="@style/textViewLabelStyle"
         android:layout_height="fill_parent"
-        style="@style/textViewLabelStyle">
+        android:layout_marginTop="48dp"
+        android:dividerHeight="10sp"
+        android:gravity="center" >
     </ListView>
 
-    
-    <include layout="@layout/layout_save_button_bar" />
-     
+    <RelativeLayout
+        android:id="@+id/InnerRelativeLayout"
+        style="@style/ButtonBar" >
+
+        <Button
+            android:id="@+id/done"
+            style="@style/ButtonBarButton"
+            android:layout_alignParentRight="true"
+            android:onClick="close"
+            android:text="@string/done" >
+        </Button>
+
+    </RelativeLayout>
+
 </RelativeLayout>
