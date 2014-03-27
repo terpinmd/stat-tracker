@@ -20,20 +20,19 @@
     </ListView>
 
     <RelativeLayout
-        android:id="@+id/InnerRelativeLayout"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"    
-        android:layout_alignParentBottom="true"     
-        style="@style/ButtonBar" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
 
         <Button
             android:id="@+id/done"
-            style="@style/ButtonBarButton"
+            style="?buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:onClick="close"
             android:text="@string/done" >
         </Button>
-
     </RelativeLayout>
 
 </RelativeLayout>
