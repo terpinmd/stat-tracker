@@ -31,7 +31,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int rectangle=0x7f020002;
     }
     public static final class id {
-        public static final int InnerRelativeLayout=0x7f070002;
+        public static final int InnerRelativeLayout=0x7f07000d;
         public static final int TextViewTitle2=0x7f070012;
         public static final int addPlayer=0x7f07001c;
         public static final int addTeam=0x7f070014;
@@ -40,12 +40,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonBarRelativeLayout=0x7f07002d;
         public static final int delete=0x7f07000e;
         public static final int deleteTeam=0x7f070015;
-        public static final int done=0x7f070003;
+        public static final int done=0x7f070002;
         public static final int editPlayer=0x7f07001d;
         public static final int editTeamName=0x7f070018;
         public static final int editTeamNameLabel=0x7f070017;
-        public static final int firstNameLabel=0x7f070006;
-        public static final int firstNameText=0x7f070007;
+        public static final int firstNameLabel=0x7f070005;
+        public static final int firstNameText=0x7f070006;
         public static final int gameHistoryList=0x7f070000;
         public static final int gameRosterList=0x7f070001;
         public static final int game_notes=0x7f070023;
@@ -55,10 +55,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int groundBalls=0x7f07002a;
         public static final int groundBallsHeader=0x7f070026;
         public static final int history=0x7f070011;
-        public static final int jerseyLabel=0x7f07000c;
-        public static final int jerseyText=0x7f07000d;
-        public static final int lastNameLabel=0x7f070009;
-        public static final int lastNameText=0x7f07000a;
+        public static final int jerseyLabel=0x7f07000b;
+        public static final int jerseyText=0x7f07000c;
+        public static final int lastNameLabel=0x7f070008;
+        public static final int lastNameText=0x7f070009;
         public static final int playerName=0x7f070029;
         public static final int playerNameHeader=0x7f070025;
         public static final int save=0x7f07002e;
@@ -68,10 +68,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int select_vs_team_spinner=0x7f070021;
         public static final int start=0x7f070024;
         public static final int start_game=0x7f070010;
-        public static final int tableLayout1=0x7f070004;
-        public static final int tableRow1=0x7f070005;
-        public static final int tableRow2=0x7f070008;
-        public static final int tableRow3=0x7f07000b;
+        public static final int tableLayout1=0x7f070003;
+        public static final int tableRow1=0x7f070004;
+        public static final int tableRow2=0x7f070007;
+        public static final int tableRow3=0x7f07000a;
         public static final int tableRow4=0x7f070016;
         public static final int tableRow5=0x7f070019;
         public static final int teamRosterLabel=0x7f07001a;
