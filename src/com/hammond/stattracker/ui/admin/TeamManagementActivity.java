@@ -25,6 +25,10 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 	
     protected PlayerService playerService;
     
+    private Spinner teamSpinner;
+    
+    private Spinner playerSpinner;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,26 +36,24 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
         playerService = new PlayerService(this);
         //playerService.createDefaults();
         setContentView(R.layout.activity_team_mgmt);       
-        buildTeamsSpinner();
-        buildPlayersSpinner();
+        teamSpinner = (Spinner) findViewById(R.id.select_team_spinner);
+        playerSpinner = (Spinner) findViewById(R.id.select_player_spinner);
+        refresh();
     }
 
 	public void buildTeamsSpinner(){
-    	Spinner spinner = (Spinner) findViewById(R.id.select_team_spinner);
-       	spinner.setAdapter(new TeamSpinnerAdapter(this));
-       	spinner.setOnItemSelectedListener(this);
+		teamSpinner.setAdapter(new TeamSpinnerAdapter(this));
+		teamSpinner.setOnItemSelectedListener(this);
     }
     
     public void buildPlayersSpinner(){
-    	Spinner spinner = (Spinner) findViewById(R.id.select_player_spinner);
-       	spinner.setAdapter(new PlayerSpinnerAdapter(this, this.getSelectedTeam()));
+    	playerSpinner.setAdapter(new PlayerSpinnerAdapter(this, this.getSelectedTeam()));
     }
 
     public void deleteTeam(View view){
-    	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner); 
     	this.teamService.delete((Team) teamSpinner.getSelectedItem());
     	teamSpinner.setSelection(0);
-    	buildTeamsSpinner();
+    	refresh();
     }
     
     
@@ -60,10 +62,10 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     }
     
     public void toggleControlsActions(boolean value){
-    	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner);
+    	
     	teamSpinner.setEnabled(value);
     	teamSpinner.setVisibility(value == false ? View.INVISIBLE : View.VISIBLE);
-    	Spinner playerSpinner = (Spinner) findViewById(R.id.select_player_spinner);
+    	
     	playerSpinner.setEnabled(value);
     	playerSpinner.setVisibility(value == false ? View.INVISIBLE : View.VISIBLE);
     	Button addPlayer = (Button) findViewById(R.id.addPlayer);
@@ -83,13 +85,11 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
       
     
     public void save(View view){
-    	Spinner teamSpinner = (Spinner) findViewById(R.id.select_team_spinner); //TODO clean this up    	
 		Team team = teamSpinner.isEnabled() && teamSpinner.getCount() > 0 ? getSelectedTeam() : new Team();
 		EditText editText = (EditText) findViewById(R.id.editTeamName);
 		team.setName(editText.getText().toString());
 		teamService.save(team);    	
-		toggleControlsActions(true);
-		buildTeamsSpinner();
+		refresh();
     }
     
     
@@ -110,13 +110,11 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
     }
         
     private Team getSelectedTeam(){
-    	Spinner spinner =  (Spinner) findViewById(R.id.select_team_spinner);
-    	return (Team) spinner.getSelectedItem();
+    	return (Team) teamSpinner.getSelectedItem();
     }
  
     private Player getSelectedPlayer(){
-    	Spinner spinner =  (Spinner) findViewById(R.id.select_player_spinner);
-    	return (Player) spinner.getSelectedItem();
+    	return (Player) playerSpinner.getSelectedItem();
     }
     
 
@@ -124,8 +122,7 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 	public void onItemSelected(AdapterView<?> adapter, View view, int position, long rowId) {		
 		EditText editText = (EditText) findViewById(R.id.editTeamName);
 		Team team = getSelectedTeam();
-		editText.setText(team.getName());
-		
+		editText.setText(team.getName());		
 		buildPlayersSpinner();
         toggleControlsActions(true);
 	}
@@ -138,7 +135,12 @@ public class TeamManagementActivity extends Activity implements OnItemSelectedLi
 	@Override
 	public void onResume() { 
 		super.onResume();
+		refresh();
+	}
+	
+	private void refresh(){
 		buildPlayersSpinner();
+		buildTeamsSpinner();
 		toggleControlsActions(true);
 	}
 

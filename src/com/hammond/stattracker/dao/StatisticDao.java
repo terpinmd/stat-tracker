@@ -64,6 +64,11 @@ public class StatisticDao extends AbstractBaseDao<AbstractStatistic> {
 	}
 	
 	
+	public void deleteByPlayer(Player player){
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.delete(TABLE_NAME_GAME_STATISTICS, " player_id = ? ", new String[]{player.getId().toString()});
+	}
+	
 	public void deleteLast(AbstractStatistic statistic, Player player, Game game){
 
 		SQLiteDatabase db = this.getReadableDatabase();
