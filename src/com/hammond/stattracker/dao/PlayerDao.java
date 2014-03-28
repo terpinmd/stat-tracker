@@ -26,12 +26,6 @@ public class PlayerDao extends AbstractBaseDao<Player>{
 	}
 
 	
-
-	@Override
-	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-		
-	}
-	
 	public void create(Player player){
 		SQLiteDatabase db = this.getWritableDatabase();		
 		ContentValues values = new ContentValues();		

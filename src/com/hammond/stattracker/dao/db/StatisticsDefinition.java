@@ -32,9 +32,9 @@ public class StatisticsDefinition {
 		buffer.append("CREATE TABLE ").append(TABLE_NAME_GAME_STATISTICS);
 		buffer.append("(");
 			buffer.append(ID).append(" INTEGER PRIMARY KEY").append(",");
-			buffer.append(COLUMN_NAME_GAME_STATISTICS_GAME_ID).append(" INTEGER ").append(",");
-			buffer.append(COLUMN_NAME_GAME_STATISTICS_PLAYER_ID).append(" INTEGER ").append(",");
-			buffer.append(COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID).append(" INTEGER").append(",");
+			buffer.append(COLUMN_NAME_GAME_STATISTICS_GAME_ID).append(" INTEGER REFERENCES GAME(id) ON DELETE CASCADE ").append(",");
+			buffer.append(COLUMN_NAME_GAME_STATISTICS_PLAYER_ID).append(" INTEGER REFERENCES PLAYER(id) ON DELETE CASCADE ").append(",");
+			buffer.append(COLUMN_NAME_GAME_STATISTICS_STATISTICS_ID).append(" INTEGER ").append(",");
 			buffer.append(COLUMN_NAME_GAME_STATISTICS_STATISTICS_VALUE).append(" INTEGER");
 		buffer.append(")");		
 		return  buffer.toString();

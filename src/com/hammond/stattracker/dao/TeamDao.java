@@ -16,13 +16,12 @@ import com.hammond.stattracker.domain.Team;
 
 public class TeamDao extends AbstractBaseDao<Team> {
 
-	private PlayerDao playerDao;
-	
+	private Context context;
+		
 	public TeamDao(Context context) {
 		super(context);
-		this.playerDao = new PlayerDao(context);
+		this.context = context;
 	}
-
 	
 	public void dbCreate(){
 		this.onCreate(this.getWritableDatabase());
@@ -48,7 +47,8 @@ public class TeamDao extends AbstractBaseDao<Team> {
 	
 	public void delete(Team team){
 		SQLiteDatabase db = this.getReadableDatabase();
-		playerDao.deleteByTeam(team);
+		new PlayerDao(context).deleteByTeam(team);
+		new GameDao(context).deleteByTeam(team);
 		db.delete(TABLE_NAME_TEAM, "id = ?", new String[] {team.getId().toString()});		
 	}
 	
@@ -69,7 +69,9 @@ public class TeamDao extends AbstractBaseDao<Team> {
 	public Team getTeam(Long id){
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery("select * from team where id = ?", new String[] {id.toString()});
-		cursor.moveToFirst();
+		if(!cursor.moveToFirst()){
+			return null;
+		}
 		return this.build(cursor);
 	}
 	

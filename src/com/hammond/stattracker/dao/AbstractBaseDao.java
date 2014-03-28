@@ -23,11 +23,12 @@ public abstract class AbstractBaseDao<T> extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		db.execSQL("PRAGMA foreign_keys=ON;");
 		db.execSQL(TeamDefinition.getCreateTeamTableSql());
 		db.execSQL(PlayerDefinition.getCreatePlayerTableSql());
 		db.execSQL(GameSchema.getCreateGameTableSql());
 		db.execSQL(StatisticsDefinition.getCreateGameStatisticsTableSql());
-		db.execSQL(StatisticsDefinition.getCreateStatisticsTableSql());
+		db.execSQL(StatisticsDefinition.getCreateStatisticsTableSql());		
 		createDefaultStatistics(db);
 	}
 

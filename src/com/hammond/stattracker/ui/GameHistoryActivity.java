@@ -1,5 +1,7 @@
 package com.hammond.stattracker.ui;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +30,8 @@ public class GameHistoryActivity extends Activity {
 		context = this;
 
 		final ListView listView = (ListView) findViewById(R.id.gameHistoryList);
-		listView.setAdapter(new ArrayAdapter<Game>(this, android.R.layout.simple_list_item_1, this.gameService.getAll()));
+		List<Game> games =  this.gameService.getAll();
+		listView.setAdapter(new ArrayAdapter<Game>(this, android.R.layout.simple_list_item_1, games));
 		
 		listView.setOnItemClickListener(new OnItemClickListener(){
 

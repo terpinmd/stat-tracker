@@ -19,11 +19,11 @@ import com.hammond.stattracker.domain.Game;
 import com.hammond.stattracker.domain.Team;
 public class GameDao extends AbstractBaseDao<Game> {
 
-	private TeamDao teamDao;
+	private Context context;
 
 	public GameDao(Context context) {
 		super(context);
-		teamDao = new TeamDao(context);
+		this.context = context;
 	}
 
 	
@@ -52,6 +52,13 @@ public class GameDao extends AbstractBaseDao<Game> {
 		db.update(TABLE_NAME_GAME, values, "id = ?", new String[]{ game.getId().toString() } );	
 	}
 
+	public void deleteByTeam(Team team){
+		SQLiteDatabase db = this.getWritableDatabase();		
+		db.delete(TABLE_NAME_GAME, "my_team_id = ?", new String[]{ team.getId().toString() } );
+		db.delete(TABLE_NAME_GAME, "vs_team_id = ?", new String[]{ team.getId().toString() } );	
+	}
+	
+	
 	public List<Game> getAll(Team team){
 		SQLiteDatabase db = this.getReadableDatabase();
 		
@@ -92,6 +99,8 @@ public class GameDao extends AbstractBaseDao<Game> {
 		game.setTitle(c.getString(c.getColumnIndex(COLUMN_GAME_TITLE)));
 		game.setDateTime(c.getLong(c.getColumnIndex(COLUMN_GAME_DATE)));
 		game.setNotes(c.getString(c.getColumnIndex(COLUMN_GAME_NOTES)));
+		
+		TeamDao teamDao = new TeamDao(context);
 		
 		Team myTeam = teamDao.getTeam(c.getLong(c.getColumnIndex(COLUMN_MY_TEAM)));
 		game.setMyTeam(myTeam);

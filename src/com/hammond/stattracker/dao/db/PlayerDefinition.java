@@ -15,7 +15,7 @@ public class PlayerDefinition {
 		buffer.append("CREATE TABLE ").append(TABLE_NAME_PLAYER);
 		buffer.append("(");
 			buffer.append(ID).append(" INTEGER PRIMARY KEY").append(",");
-			buffer.append(COLUMN_TEAM).append(" INTEGER ").append(",");
+			buffer.append(COLUMN_TEAM).append(" INTEGER REFERENCES TEAM(id) ON DELETE CASCADE ").append(",");
 			buffer.append(COLUMN_FIRST_NAME).append(" TEXT").append(",");
 			buffer.append(COLUMN_LAST_NAME).append(" TEXT").append(",");
 			buffer.append(COLUMN_JERSEY_NUMBER).append(" INTEGER");
