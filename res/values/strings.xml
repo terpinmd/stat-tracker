@@ -13,7 +13,8 @@
     <string name="other_team">vs</string>
     <string name="game_notes">Notes</string>
     <string name="game_in_progress">Game In Progress</string>
-         
+    <string name="vs_team_score">Other teams final score</string> 
+        
 	<string name="back">Back</string>
 	<string name="save">Save</string>    
 	<string name="edit">Edit</string>    	

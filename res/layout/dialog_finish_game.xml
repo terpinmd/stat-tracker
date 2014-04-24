@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    style="@style/fullScreenActivityTheme"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/vsTeamScore"
+        android:text="@string/vs_team_score"
+        style="@style/textViewLabelStyle" />
+
+    <EditText
+        android:id="@+id/vsTeamScoreInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:inputType="textCapSentences"
+        android:minHeight="120dp"
+        android:textColor="#FFF"
+        android:textSize="12sp" />
+
+
+</LinearLayout>

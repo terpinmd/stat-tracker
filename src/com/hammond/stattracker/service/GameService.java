@@ -32,4 +32,8 @@ public class GameService {
 	public List<Game> getAll(){
 		return this.gameDao.getAll();
 	}
+	
+	public void delete(Game game){
+		gameDao.deleteByGame(game);
+	}
 }

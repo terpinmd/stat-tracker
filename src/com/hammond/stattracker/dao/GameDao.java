@@ -1,11 +1,6 @@
 package com.hammond.stattracker.dao;
 
-import static com.hammond.stattracker.dao.db.GameSchema.COLUMN_GAME_DATE;
-import static com.hammond.stattracker.dao.db.GameSchema.COLUMN_GAME_NOTES;
-import static com.hammond.stattracker.dao.db.GameSchema.COLUMN_GAME_TITLE;
-import static com.hammond.stattracker.dao.db.GameSchema.COLUMN_MY_TEAM;
-import static com.hammond.stattracker.dao.db.GameSchema.COLUMN_VS_TEAM;
-import static com.hammond.stattracker.dao.db.GameSchema.TABLE_NAME_GAME;
+import static com.hammond.stattracker.dao.db.GameSchema.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +24,16 @@ public class GameDao extends AbstractBaseDao<Game> {
 	
 	
 	public void create(Game game){
-		SQLiteDatabase db = this.getWritableDatabase();		
+		SQLiteDatabase db = this.getWritableDatabase();	
+		//db.execSQL("alter table game add column vs_team_score INTEGER");
 		ContentValues values = new ContentValues();		
 		values.put(COLUMN_GAME_TITLE, game.getTitle());
 		values.put(COLUMN_GAME_DATE, game.getDateTime());
 		values.put(COLUMN_MY_TEAM, game.getMyTeam().getId());
 		values.put(COLUMN_VS_TEAM, game.getVsTeam().getId());
-		values.put(COLUMN_GAME_NOTES, game.getNotes());	
+		values.put(COLUMN_GAME_NOTES, game.getNotes());
+		values.put(COLUMN_VS_TEAM_SCORE, game.getVsTeamScore());
+		
 		long id = db.insert(TABLE_NAME_GAME, null, values);	
 		game.setId(id);
 	}
@@ -49,6 +47,7 @@ public class GameDao extends AbstractBaseDao<Game> {
 		values.put(COLUMN_MY_TEAM, game.getMyTeam().getId());
 		values.put(COLUMN_VS_TEAM, game.getVsTeam().getId());
 		values.put(COLUMN_GAME_NOTES, game.getNotes());	
+		values.put(COLUMN_VS_TEAM_SCORE, game.getVsTeamScore());
 		db.update(TABLE_NAME_GAME, values, "id = ?", new String[]{ game.getId().toString() } );	
 	}
 
@@ -56,6 +55,11 @@ public class GameDao extends AbstractBaseDao<Game> {
 		SQLiteDatabase db = this.getWritableDatabase();		
 		db.delete(TABLE_NAME_GAME, "my_team_id = ?", new String[]{ team.getId().toString() } );
 		db.delete(TABLE_NAME_GAME, "vs_team_id = ?", new String[]{ team.getId().toString() } );	
+	}
+	
+	public void deleteByGame(Game game){
+		SQLiteDatabase db = this.getWritableDatabase();		
+		db.delete(TABLE_NAME_GAME, "id = ?", new String[]{ game.getId().toString() } );
 	}
 	
 	
@@ -107,6 +111,8 @@ public class GameDao extends AbstractBaseDao<Game> {
 		
 		Team vsTeam = teamDao.getTeam(c.getLong(c.getColumnIndex(COLUMN_VS_TEAM)));
 		game.setVsTeam(vsTeam);
+		
+		game.setVsTeamScore(c.getLong(c.getColumnIndex(COLUMN_VS_TEAM_SCORE)));
 		
 		return game;
 	}

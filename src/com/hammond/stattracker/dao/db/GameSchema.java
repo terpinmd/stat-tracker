@@ -9,6 +9,7 @@ public class GameSchema {
     public static final String COLUMN_TEAM = "team";
     public static final String COLUMN_MY_TEAM = "my_team_id";
     public static final String COLUMN_VS_TEAM = "vs_team_id";    
+    public static final String COLUMN_VS_TEAM_SCORE = "vs_team_score";   
     
 	public static String getCreateGameTableSql(){
 		StringBuffer buffer = new StringBuffer();
@@ -19,7 +20,8 @@ public class GameSchema {
 			buffer.append(COLUMN_GAME_DATE).append(" INTEGER").append(",");
 			buffer.append(COLUMN_MY_TEAM).append(" INTEGER REFERENCES TEAM(id) ON DELETE CASCADE ").append(",");
 			buffer.append(COLUMN_VS_TEAM).append(" INTEGER  REFERENCES TEAM(id) ON DELETE CASCADE ").append(",");
-			buffer.append(COLUMN_GAME_NOTES).append(" TEXT");
+			buffer.append(COLUMN_GAME_NOTES).append(" TEXT ").append(",");
+			buffer.append(COLUMN_VS_TEAM_SCORE).append(" INTEGER ");
 		buffer.append(")");		 
 		return  buffer.toString();
 	}

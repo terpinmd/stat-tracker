@@ -16,7 +16,7 @@ public class Game extends AbstractDomainClass {
 
 	private String title;
 
-	private Long dateTime;
+	private Long dateTime, vsTeamScore;
 
 	private String notes;
 
@@ -71,6 +71,14 @@ public class Game extends AbstractDomainClass {
 
 	public Date getDate(){
 		return new Date(this.dateTime);
+	}
+
+	public Long getVsTeamScore() {
+		return vsTeamScore;
+	}
+
+	public void setVsTeamScore(Long vsTeamScore) {
+		this.vsTeamScore = vsTeamScore;
 	}
 	
 	

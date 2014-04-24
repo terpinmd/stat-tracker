@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -45,5 +46,15 @@ public class GameHistoryActivity extends Activity {
 			}
 			
 		});
+		
+		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                    int position, long id) {
+            	Game game = (Game) listView.getItemAtPosition(position);
+                gameService.delete(game);
+                return true;
+            }
+        }); 
 	}
 }

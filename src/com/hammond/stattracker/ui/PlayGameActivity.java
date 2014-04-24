@@ -1,9 +1,13 @@
 package com.hammond.stattracker.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.hammond.stattracker.R;
@@ -32,8 +36,30 @@ public class PlayGameActivity extends Activity {
 	}
 
 	public void close(View view) {
-		gameService.save(this.game);
-		this.finish();
+		
+		LayoutInflater layoutInflater = LayoutInflater.from(this);
+		View promptView = layoutInflater.inflate(R.layout.dialog_finish_game, null);
+
+		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		dialog.setView(promptView);
+
+		final EditText input = (EditText) promptView.findViewById(R.id.vsTeamScoreInput);
+		final Activity context = this;
+		dialog.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                game.setVsTeamScore(Long.valueOf(input.getText().toString()));
+                gameService.save(game);
+                context.finish();
+            }
+        }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+		AlertDialog alertD = dialog.create();
+		alertD.show();
+		
 	}
 	
 	public boolean isReadyOnly(){
